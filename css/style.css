@@ -603,7 +603,7 @@ a.article-title:hover {
   max-width: 100%;
   height: auto;
   display: block;
-  margin: auto;
+  margin: 10px auto 0;
 }
 .article-entry iframe {
   border: none;
@@ -623,10 +623,11 @@ a.article-title:hover {
   padding: 10px 0;
 }
 .article-entry blockquote {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.4em;
+  font-family: "Microsoft Yahei", Georgia, "Times New Roman", serif;
+  font-size: 1em;
   margin: 1.6em 20px;
-  text-align: center;
+  color: #657b83;
+  background: #f5f5f5;
 }
 .article-entry blockquote footer {
   font-size: 14px;
