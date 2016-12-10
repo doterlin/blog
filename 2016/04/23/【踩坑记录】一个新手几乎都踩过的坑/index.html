@@ -5,16 +5,16 @@
   
   <title>【踩坑记录】一个新手几乎都踩过的坑... | Doterlin&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="话不多说，这个坑就是：浏览器缓存。">
+  <meta name="description" content="话不多说，这个坑就是：浏览器缓存。前段时间在一个平台上线前的一个晚上，在做最后的业务检查时发现进入游戏页面时一个白屏bug，看了以后是js控制的页面高度变为0所以没显示正常。。。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【踩坑记录】一个新手几乎都踩过的坑...">
 <meta property="og:url" content="https://doterlin.github.io/blog/2016/04/23/【踩坑记录】一个新手几乎都踩过的坑/index.html">
 <meta property="og:site_name" content="Doterlin's Blog">
-<meta property="og:description" content="话不多说，这个坑就是：浏览器缓存。">
-<meta property="og:updated_time" content="2016-12-10T03:46:41.244Z">
+<meta property="og:description" content="话不多说，这个坑就是：浏览器缓存。前段时间在一个平台上线前的一个晚上，在做最后的业务检查时发现进入游戏页面时一个白屏bug，看了以后是js控制的页面高度变为0所以没显示正常。。。">
+<meta property="og:updated_time" content="2016-12-10T19:31:37.072Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【踩坑记录】一个新手几乎都踩过的坑...">
-<meta name="twitter:description" content="话不多说，这个坑就是：浏览器缓存。">
+<meta name="twitter:description" content="话不多说，这个坑就是：浏览器缓存。前段时间在一个平台上线前的一个晚上，在做最后的业务检查时发现进入游戏页面时一个白屏bug，看了以后是js控制的页面高度变为0所以没显示正常。。。">
   
     <link rel="alternate" href="/atom.xml" title="Doterlin&#39;s Blog" type="application/atom+xml">
   
@@ -89,7 +89,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>话不多说，这个坑就是：浏览器缓存。</strong><br><a id="more"></a><br>前段时间在一个平台上线前的一个晚上，在做最后的业务检查时发现进入游戏页面时一个白屏bug，看了以后是js控制的页面高度变为0所以没显示正常。。。<br>吓得我赶紧改了一番，按照流程在上线前是要走QA的，然而这时候测试妹纸已经累的不行先回去了（这几天累的有点病）。于是没回去的几个人自己测一通，咦没什么问题，好走你!上线!<br>于是过了一天平台正式对外时公司有人测出还是白屏。。。<br>又检查了一遍代码，做了些修改后走测试后上线了。我让运维同志帮忙刷<code>cdn</code>，不过有些人还是不正常显示，话说这个游戏页面是前后端混合开发的，我准备在php页面改js时间戳时被组长制止，说让后端改。于是后端改了时间戳后大家都说正常了。</p>
+        <p><strong>话不多说，这个坑就是：浏览器缓存。</strong><br>前段时间在一个平台上线前的一个晚上，在做最后的业务检查时发现进入游戏页面时一个白屏bug，看了以后是js控制的页面高度变为0所以没显示正常。。。<br><a id="more"></a><br>吓得我赶紧改了一番，按照流程在上线前是要走QA的，然而这时候测试妹纸已经累的不行先回去了（这几天累的有点病）。于是没回去的几个人自己测一通，咦没什么问题，好走你!上线!<br>于是过了一天平台正式对外时公司有人测出还是白屏。。。<br>又检查了一遍代码，做了些修改后走测试后上线了。我让运维同志帮忙刷<code>cdn</code>，不过有些人还是不正常显示，话说这个游戏页面是前后端混合开发的，我准备在php页面改js时间戳时被组长制止，说让后端改。于是后端改了时间戳后大家都说正常了。</p>
 <p><strong>说完了故事来总结一下吧:</strong><br>1.可以在页面头部让浏览器别缓存本页面资源，每次打开都是直接访问服务器获取，（不过是只有部分浏览器支持，然而也很少人这么做，所以大家知道下就好）：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">META</span> <span class="attr">HTTP-EQUIV</span>=<span class="string">"Pragma"</span> <span class="attr">CONTENT</span>=<span class="string">"no-cache"</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>2.通俗的讲，平时工作中说的加时间戳不一样是加一个一大段代表某个时候的数字，而是加一个区别于修改前的版本就好，因为加了以后浏览器会把他当一个新文件对待而不去拉取缓存，例如原来是：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"a.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>修改后你可以这样加：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 方式一 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"a.js?v=1.0"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 方式二 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"a.js?t=20160423"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
@@ -109,7 +109,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://doterlin.github.io/blog/blog/2016/04/23/【踩坑记录】一个新手几乎都踩过的坑/" data-id="ciwipetk60003vkl1oaaf0oyf" class="article-share-link">Share</a>
+      <a data-url="https://doterlin.github.io/blog/blog/2016/04/23/【踩坑记录】一个新手几乎都踩过的坑/" data-id="ciwjm8jv4000cv0l1sjovc429" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/HTTP/">HTTP</a></li></ul>
@@ -170,7 +170,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/03/">三月 2016</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/03/">三月 2016</a></li></ul>
     </div>
   </div>
 
@@ -183,11 +183,11 @@
       <ul>
         
           <li>
-            <a href="/blog/2016/12/10/【转】JavaScript的事件代理和委托实例分析/">【转】JavaScript的事件代理和委托实例分析</a>
+            <a href="/blog/2016/12/04/致新博客正式建成的这一天！/">致新博客正式建成的这一天！</a>
           </li>
         
           <li>
-            <a href="/blog/2016/12/04/致新博客正式建成的这一天！/">致新博客正式建成的这一天！</a>
+            <a href="/blog/2016/07/01/【干货】Array对象的方法大全，看看你知道多少/">【干货】Array对象的方法大全，看看你知道多少.</a>
           </li>
         
           <li>
@@ -195,11 +195,11 @@
           </li>
         
           <li>
-            <a href="/blog/2016/05/27/【css3效果】用css3绘制发光字/">【css3效果】用css3绘制发光字</a>
+            <a href="/blog/2016/06/16/【转】JavaScript的事件代理和委托实例分析/">【转】JavaScript的事件代理和委托实例分析</a>
           </li>
         
           <li>
-            <a href="/blog/2016/04/23/【踩坑记录】一个新手几乎都踩过的坑/">【踩坑记录】一个新手几乎都踩过的坑...</a>
+            <a href="/blog/2016/05/27/【css3效果】用css3绘制发光字/">【css3效果】用css3绘制发光字</a>
           </li>
         
       </ul>

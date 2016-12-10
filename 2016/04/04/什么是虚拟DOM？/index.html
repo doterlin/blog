@@ -5,16 +5,16 @@
   
   <title>什么是虚拟DOM？ | Doterlin&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="（摘抄自一篇文章，觉得这里写得非常不错，所以单独放出来，希望能对大家有帮助。）">
+  <meta name="description" content="（摘抄自一篇文章，觉得这里写得非常不错，所以单独放出来，希望能对大家有帮助。）React为啥这么大？因为它实现了一个虚拟DOM（Virtual DOM）。虚拟DOM是干什么的？这就要从浏览器本身讲起。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="什么是虚拟DOM？">
 <meta property="og:url" content="https://doterlin.github.io/blog/2016/04/04/什么是虚拟DOM？/index.html">
 <meta property="og:site_name" content="Doterlin's Blog">
-<meta property="og:description" content="（摘抄自一篇文章，觉得这里写得非常不错，所以单独放出来，希望能对大家有帮助。）">
-<meta property="og:updated_time" content="2016-12-10T03:44:30.502Z">
+<meta property="og:description" content="（摘抄自一篇文章，觉得这里写得非常不错，所以单独放出来，希望能对大家有帮助。）React为啥这么大？因为它实现了一个虚拟DOM（Virtual DOM）。虚拟DOM是干什么的？这就要从浏览器本身讲起。">
+<meta property="og:updated_time" content="2016-12-10T19:31:58.448Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="什么是虚拟DOM？">
-<meta name="twitter:description" content="（摘抄自一篇文章，觉得这里写得非常不错，所以单独放出来，希望能对大家有帮助。）">
+<meta name="twitter:description" content="（摘抄自一篇文章，觉得这里写得非常不错，所以单独放出来，希望能对大家有帮助。）React为啥这么大？因为它实现了一个虚拟DOM（Virtual DOM）。虚拟DOM是干什么的？这就要从浏览器本身讲起。">
   
     <link rel="alternate" href="/atom.xml" title="Doterlin&#39;s Blog" type="application/atom+xml">
   
@@ -89,14 +89,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>（摘抄自一篇文章，觉得这里写得非常不错，所以单独放出来，希望能对大家有帮助。）<br><a id="more"></a><br><code>React</code>为啥这么大？因为它实现了一个<code>虚拟DOM</code>（Virtual DOM）。<code>虚拟DOM</code>是干什么的？这就要从浏览器本身讲起。</p>
-<p>如我们所知，在浏览器渲染网页的过程中，加载到HTML文档后，会将文档解析并构建DOM树，然后将其与解析CSS生成的CSSOM树一起结合产生爱的结晶——RenderObject树，然后将RenderObject树渲染成页面（当然中间可能会有一些优化，比如RenderLayer树）。这些过程都存在与渲染引擎之中，渲染引擎在浏览器中是于JavaScript引擎（JavaScriptCore也好V8也好）分离开的，但为了方便JS操作DOM结构，渲染引擎会暴露一些接口供JavaScript调用。由于这两块相互分离，通信是需要付出代价的，因此JavaScript调用DOM提供的接口性能不咋地。各种性能优化的最佳实践也都在尽可能的减少DOM操作次数。</p>
+        <p>（摘抄自一篇文章，觉得这里写得非常不错，所以单独放出来，希望能对大家有帮助。）<br><code>React</code>为啥这么大？因为它实现了一个<code>虚拟DOM</code>（Virtual DOM）。<code>虚拟DOM</code>是干什么的？这就要从浏览器本身讲起。<br><a id="more"></a><br>如我们所知，在浏览器渲染网页的过程中，加载到HTML文档后，会将文档解析并构建DOM树，然后将其与解析CSS生成的CSSOM树一起结合产生爱的结晶——RenderObject树，然后将RenderObject树渲染成页面（当然中间可能会有一些优化，比如RenderLayer树）。这些过程都存在与渲染引擎之中，渲染引擎在浏览器中是于JavaScript引擎（JavaScriptCore也好V8也好）分离开的，但为了方便JS操作DOM结构，渲染引擎会暴露一些接口供JavaScript调用。由于这两块相互分离，通信是需要付出代价的，因此JavaScript调用DOM提供的接口性能不咋地。各种性能优化的最佳实践也都在尽可能的减少DOM操作次数。</p>
 <p>而虚拟DOM干了什么？它直接用JavaScript实现了DOM树（大致上）。组件的HTML结构并不会直接生成DOM，而是映射生成虚拟的JavaScript DOM结构，React又通过在这个虚拟DOM上实现了一个 diff 算法找出最小变更，再把这些变更写入实际的DOM中。这个虚拟DOM以JS结构的形式存在，计算性能会比较好，而且由于减少了实际DOM操作次数，性能会有较大提升。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://doterlin.github.io/blog/blog/2016/04/04/什么是虚拟DOM？/" data-id="ciwipetk60007vkl1rv6sl318" class="article-share-link">Share</a>
+      <a data-url="https://doterlin.github.io/blog/blog/2016/04/04/什么是虚拟DOM？/" data-id="ciwjm8jux0005v0l1kye6d9cg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/MVVM/">MVVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/React/">React</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/javascript/">javascript</a></li></ul>
@@ -157,7 +156,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/03/">三月 2016</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/03/">三月 2016</a></li></ul>
     </div>
   </div>
 
@@ -170,11 +169,11 @@
       <ul>
         
           <li>
-            <a href="/blog/2016/12/10/【转】JavaScript的事件代理和委托实例分析/">【转】JavaScript的事件代理和委托实例分析</a>
+            <a href="/blog/2016/12/04/致新博客正式建成的这一天！/">致新博客正式建成的这一天！</a>
           </li>
         
           <li>
-            <a href="/blog/2016/12/04/致新博客正式建成的这一天！/">致新博客正式建成的这一天！</a>
+            <a href="/blog/2016/07/01/【干货】Array对象的方法大全，看看你知道多少/">【干货】Array对象的方法大全，看看你知道多少.</a>
           </li>
         
           <li>
@@ -182,11 +181,11 @@
           </li>
         
           <li>
-            <a href="/blog/2016/05/27/【css3效果】用css3绘制发光字/">【css3效果】用css3绘制发光字</a>
+            <a href="/blog/2016/06/16/【转】JavaScript的事件代理和委托实例分析/">【转】JavaScript的事件代理和委托实例分析</a>
           </li>
         
           <li>
-            <a href="/blog/2016/04/23/【踩坑记录】一个新手几乎都踩过的坑/">【踩坑记录】一个新手几乎都踩过的坑...</a>
+            <a href="/blog/2016/05/27/【css3效果】用css3绘制发光字/">【css3效果】用css3绘制发光字</a>
           </li>
         
       </ul>

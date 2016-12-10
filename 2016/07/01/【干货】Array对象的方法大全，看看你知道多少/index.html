@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>【干货】Array对象的方法大全，看看你知道多少. | Doterlin&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="从《高程》中整理出来的数组的概念和数组对象的一些方法，分享给大家同时也是复习复习，有不正确的地方欢迎指正，共同进步。
+一.认识引用类型js中的数据类型分为基本类型（string，boolean，undefined，null，number）和引用类型。引用类型的值（对象）是引用类型的一个实例，在ECMA中，引用类型是一种数据结构，它相当于其他语言中的类。而对象则是某个特定类型的实例。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【干货】Array对象的方法大全，看看你知道多少.">
+<meta property="og:url" content="https://doterlin.github.io/blog/2016/07/01/【干货】Array对象的方法大全，看看你知道多少/index.html">
+<meta property="og:site_name" content="Doterlin's Blog">
+<meta property="og:description" content="从《高程》中整理出来的数组的概念和数组对象的一些方法，分享给大家同时也是复习复习，有不正确的地方欢迎指正，共同进步。
+一.认识引用类型js中的数据类型分为基本类型（string，boolean，undefined，null，number）和引用类型。引用类型的值（对象）是引用类型的一个实例，在ECMA中，引用类型是一种数据结构，它相当于其他语言中的类。而对象则是某个特定类型的实例。">
+<meta property="og:updated_time" content="2016-12-10T19:35:32.634Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【干货】Array对象的方法大全，看看你知道多少.">
+<meta name="twitter:description" content="从《高程》中整理出来的数组的概念和数组对象的一些方法，分享给大家同时也是复习复习，有不正确的地方欢迎指正，共同进步。
+一.认识引用类型js中的数据类型分为基本类型（string，boolean，undefined，null，number）和引用类型。引用类型的值（对象）是引用类型的一个实例，在ECMA中，引用类型是一种数据结构，它相当于其他语言中的类。而对象则是某个特定类型的实例。">
+  
+    <link rel="alternate" href="/atom.xml" title="Doterlin&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="http://fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/blog/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">Doterlin&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/blog/" id="subtitle">风萧萧兮易水寒，码农一去不复还</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://doterlin.github.io/blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-【干货】Array对象的方法大全，看看你知道多少" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2016/07/01/【干货】Array对象的方法大全，看看你知道多少/" class="article-date">
+  <time datetime="2016-07-01T08:32:28.000Z" itemprop="datePublished">2016-07-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【干货】Array对象的方法大全，看看你知道多少.
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>从《高程》中整理出来的数组的概念和数组对象的一些方法，分享给大家同时也是复习复习，有不正确的地方欢迎指正，共同进步。</p>
+<h2 id="一-认识引用类型"><a href="#一-认识引用类型" class="headerlink" title="一.认识引用类型"></a>一.认识引用类型</h2><p>js中的数据类型分为基本类型（<code>string</code>，<code>boolean</code>，<code>undefined</code>，<code>null</code>，<code>number</code>）和引用类型。引用类型的值（对象）是引用类型的一个实例，在<code>ECMA</code>中，<em>引用类型是一种数据结构，它相当于其他语言中的类。而对象则是某个特定类型的实例</em>。<br><a id="more"></a></p>
+<h2 id="二-认识数组"><a href="#二-认识数组" class="headerlink" title="二.认识数组"></a>二.认识数组</h2><p><code>Array</code>是引用类型中的一种，也是js中很常用面试题也经常出现的类型。<br>创建数组的方式有两种：</p>
+<h3 id="1-使用用Array构造函数："><a href="#1-使用用Array构造函数：" class="headerlink" title="1.使用用Array构造函数："></a>1.使用用Array构造函数：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="string">'1'</span>,<span class="string">'2'</span>,<span class="string">'3'</span>);</div></pre></td></tr></table></figure>
+<h3 id="2-使用字面量："><a href="#2-使用字面量：" class="headerlink" title="2.使用字面量："></a>2.使用字面量：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="string">'1'</span>,<span class="string">'2'</span>,<span class="string">'3'</span>];</div></pre></td></tr></table></figure>
+<h3 id="如何检测检测数："><a href="#如何检测检测数：" class="headerlink" title="如何检测检测数："></a>如何检测检测数：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="string">'1'</span>,<span class="string">'2'</span>,<span class="string">'3'</span>];</div><div class="line"><span class="keyword">if</span>(arr <span class="keyword">instanceof</span> <span class="built_in">Array</span>)&#123;</div><div class="line">    <span class="comment">//do something</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="三-数组方法"><a href="#三-数组方法" class="headerlink" title="三.数组方法"></a>三.数组方法</h2><h3 id="1-转换方法："><a href="#1-转换方法：" class="headerlink" title="1.转换方法："></a>1.转换方法：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a=[<span class="string">'1'</span>,<span class="string">'2'</span>,<span class="string">'3'</span>];</div><div class="line">a.toString();  <span class="comment">//"1,2,3"，此方法会返回会返回每一项值的字符串以逗号拼接成一个字符串</span></div><div class="line">a.valueOf();  <span class="comment">//['1','2','3'],返回的还是数组</span></div><div class="line">a.toLocaleString();  <span class="comment">//"1,2,3",通常和toString()方法的结果一样</span></div></pre></td></tr></table></figure>
+<h3 id="2-栈和队列方法"><a href="#2-栈和队列方法" class="headerlink" title="2.栈和队列方法"></a>2.栈和队列方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a=[<span class="string">'1'</span>,<span class="string">'2'</span>,<span class="string">'3'</span>,<span class="string">'4'</span>];</div><div class="line">a.push(<span class="string">'5'</span>); <span class="comment">//5，此方法会返回末尾新增一项后数组的长度，原数组变成['1','2','3','4','5']</span></div><div class="line">a.pop(); <span class="comment">//'4'，此方法会返回删除的末尾一项，原数组变成['1','2','3']</span></div><div class="line">a.shift(); <span class="comment">//'1'，此方法会返回删除的头部一项，原数组变成['2','3','4']</span></div><div class="line">a.unshift(<span class="string">'0'</span>); <span class="comment">//5，此方法会返回头部新增一项后数组的长度，原数组变成['0','1','2','3','4']</span></div></pre></td></tr></table></figure>
+<h3 id="3-重排序方法"><a href="#3-重排序方法" class="headerlink" title="3.重排序方法"></a>3.重排序方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a=[<span class="number">3</span>,<span class="number">1</span>,<span class="number">9</span>,<span class="number">18</span>];</div><div class="line">a.reverse(); <span class="comment">//[18,9,1,3],倒叙输出</span></div><div class="line">a.sort(); <span class="comment">//[1,18,3,9],字符串升序排序方法，会将每一项转换成字符串后在进行排序，'18'排在‘3’前面</span></div><div class="line">a.sort( <span class="function"><span class="keyword">function</span>(<span class="params">value1,value2</span>)</span>&#123;</div><div class="line">   <span class="keyword">return</span> value1-value2</div><div class="line">&#125; ); <span class="comment">//[1,3,9,18]，此方法还可以接受一个比较函数，此函数接收两个参数，如果第一个参数应该位于第二个参数之前则返回一个负数，如果反过来则返回正数，相等则返回0</span></div></pre></td></tr></table></figure>
+<h3 id="4-操作方法"><a href="#4-操作方法" class="headerlink" title="4.操作方法"></a>4.操作方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a=[<span class="string">'0'</span>,<span class="string">'1'</span>,<span class="string">'2'</span>,<span class="string">'3'</span>];</div><div class="line">a.concat([<span class="string">'4'</span>,<span class="number">5</span>]); <span class="comment">//['0','1','2','3','4','5']，原数组不变，返回一个合并后的数组</span></div><div class="line">a.concat(<span class="string">'4'</span>,<span class="string">'5'</span>); <span class="comment">//该方法还可以接收字符串添加到末尾，结果和上面一样</span></div><div class="line">a.slice(<span class="number">1</span>,<span class="number">2</span>); <span class="comment">//['1','2']，接收一或两个参数，分别为要截取的新数组的开始位置和结束位置，（新数组不包含结束位置项）</span></div><div class="line">a.slice(<span class="number">2</span>); <span class="comment">//['3','4']如果只有一个参数，则表示从截取该位置的项到末尾的项</span></div><div class="line">a.splice(<span class="number">1</span>,<span class="number">2</span>); <span class="comment">//会返回删除的项组成的数组，原数组变成['0','3'],如果是两个参数，则分别表示要删除的第一项的位置和要删除的项数。这是一个很强大的方法，一般用于在中部插入项，也可以用于删除和替换。</span></div><div class="line">a.splice(<span class="number">2</span>,<span class="number">0</span>,<span class="string">'1.1'</span>,<span class="string">'1.2'</span>); <span class="comment">//原数组变成["0","1","1.1","1.2","2","3"]，如果提供3个以上的参数，则第一个表示插入的起始位置，第二个表示要删除的项，第三个以后表示要插入的项</span></div><div class="line">a.splice(<span class="number">1</span>,<span class="number">1</span>,<span class="string">'1.1'</span>,<span class="string">'1.2'</span>); <span class="comment">//替换用法，原数组变成["0","1.1","1.2","2","3"]</span></div></pre></td></tr></table></figure>
+<h3 id="5-位置方法"><a href="#5-位置方法" class="headerlink" title="5.位置方法"></a>5.位置方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a=[<span class="string">'0'</span>,<span class="string">'1'</span>,<span class="string">'2'</span>,<span class="string">'3'</span>,<span class="string">'2'</span>,<span class="string">'1'</span>,<span class="string">'0'</span>];</div><div class="line">a.indexOf(<span class="string">'2'</span>); <span class="comment">//2，返回此项在数组中的第一个位置（从0开始，左边算起）</span></div><div class="line">a.lastIndexOf(<span class="string">'2'</span>); <span class="comment">//4，返回此项在数组中的最后一个位置（从0开始，左边算起）</span></div><div class="line">a.index0f(<span class="string">'5'</span>); <span class="comment">//找不到则返回-1</span></div><div class="line">a.indexOf(<span class="string">'2'</span>,<span class="number">3</span>); <span class="comment">//4,可接收第二个参数，表示开始查找的位置</span></div></pre></td></tr></table></figure>
+<p><em>这两个方法的兼容性：IE9+</em></p>
+<h3 id="6-迭代方法"><a href="#6-迭代方法" class="headerlink" title="6.迭代方法"></a>6.迭代方法</h3><p><code>ECMAScript5</code>为数组定义了5个迭代方法，接收两个参数：要在每一项运行的函数和上下文（第二个参数可省略）；<br>传入的函数接收三个参数（数组项的值，该项在数组中的位置，和数组对象本身）。这5个想法分别是：</p>
+<blockquote>
+<p><code>every()</code>    //对数组中的每一项运行传入的函数，如果每一项都返回true，则返回true<br><code>filter()</code>   //对数组中的每一项运行传入的函数，返回一个由会返回true的项组成的数组<br><code>forEach()</code>  //对数组中的每一项运行传入的函数。没有返回值。作用相当于for<br><code>map()</code>      //对数组中的每一项运行传入的函数，返回一个由每项调用传入函数的结果组成的数组<br><code>some()</code>     //对数组中的每一项运行传入的函数，如果该函数对某一项返回true，则返回true</p>
+</blockquote>
+<p>这些方法的介绍都不太好理解，以下是一些例子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>];</div><div class="line">a.every(<span class="function"><span class="keyword">function</span>(<span class="params">item,index,arr</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> (item&gt;<span class="number">2</span>)</div><div class="line">&#125;); <span class="comment">//false</span></div><div class="line"></div><div class="line">a.every(<span class="function"><span class="keyword">function</span>(<span class="params">item,index,arr</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> (item&gt;<span class="number">0</span>)</div><div class="line">&#125;); <span class="comment">//true</span></div><div class="line"></div><div class="line">a.some(<span class="function"><span class="keyword">function</span>(<span class="params">item,index,arr</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> (item&gt;<span class="number">2</span>)</div><div class="line">&#125;); <span class="comment">//true</span></div><div class="line"></div><div class="line">a.filter(<span class="function"><span class="keyword">function</span>(<span class="params">item,index,arr</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> (item&gt;<span class="number">2</span>)</div><div class="line">&#125;); <span class="comment">//[3, 4, 3]</span></div><div class="line"></div><div class="line">a.map(<span class="function"><span class="keyword">function</span>(<span class="params">item,index,arr</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> (item&gt;<span class="number">2</span>)</div><div class="line">&#125;); <span class="comment">//[false, false, true, true, true, false, false]</span></div><div class="line"></div><div class="line">a.map(<span class="function"><span class="keyword">function</span>(<span class="params">item,index,arr</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> (item*<span class="number">2</span>)</div><div class="line">&#125;); <span class="comment">//[[2, 4, 6, 8, 6, 4, 2]</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> b=[];</div><div class="line">a.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item,index,arr</span>)</span>&#123;</div><div class="line">    b[index]=item*<span class="number">2</span></div><div class="line">&#125;); </div><div class="line"><span class="built_in">console</span>.log(b); <span class="comment">//[[2, 4, 6, 8, 6, 4, 2]</span></div></pre></td></tr></table></figure></p>
+<p><em>这些方法的兼容性IE9+</em></p>
+<h3 id="7-归并方法"><a href="#7-归并方法" class="headerlink" title="7.归并方法"></a>7.归并方法</h3><p>两个归并方法：<code>reduce()</code>和<code>reduceRight()</code>；这两个方法接收一个用于迭代的函数（<code>reduce()</code>从头部开始迭代，<code>reduceRight()</code>从尾部开始）。<br>这个函数接收四个参数：当前项的前一项，当前迭代到的项，当前项的位置，数组对象。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</div><div class="line">a.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">pre,cur,index,arr</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> pre+cur;</div><div class="line">&#125;); <span class="comment">//15</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> a=[<span class="string">"1"</span>,<span class="string">"2"</span>,<span class="string">"3"</span>,<span class="string">"4"</span>,<span class="string">"5"</span>];</div><div class="line">a.reduceRight(<span class="function"><span class="keyword">function</span>(<span class="params">pre,cur,index,arr</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> pre+cur;</div><div class="line">&#125;); <span class="comment">//"54321"</span></div><div class="line">a.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">pre,cur,index,arr</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> pre+cur;</div><div class="line">&#125;); <span class="comment">//"12345"</span></div></pre></td></tr></table></figure></p>
+<p><em>这些方法的兼容性IE9+</em></p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>数组往往考察算法和对一门语言理解的重要切入点。在用的过程最好也能想想这些方法的实现，或者通过<code>Array.prototype</code>重写一次改方法的实现。这对我们很有帮助。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://doterlin.github.io/blog/blog/2016/07/01/【干货】Array对象的方法大全，看看你知道多少/" data-id="ciwjm8juo0001v0l1bzhss15l" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/javascript/">javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2016/12/04/致新博客正式建成的这一天！/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          致新博客正式建成的这一天！
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog/2016/06/24/【css3效果】有弹性的蹦跳动画/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">【css3效果】有弹性的蹦跳动画</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/MVVM/">MVVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Other/">Other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/css3/">css3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/javascript/">javascript</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/blog/tags/MVVM/" style="font-size: 10px;">MVVM</a> <a href="/blog/tags/Other/" style="font-size: 10px;">Other</a> <a href="/blog/tags/React/" style="font-size: 10px;">React</a> <a href="/blog/tags/css3/" style="font-size: 15px;">css3</a> <a href="/blog/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/blog/tags/javascript/" style="font-size: 20px;">javascript</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/03/">三月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2016/12/04/致新博客正式建成的这一天！/">致新博客正式建成的这一天！</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2016/07/01/【干货】Array对象的方法大全，看看你知道多少/">【干货】Array对象的方法大全，看看你知道多少.</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2016/06/24/【css3效果】有弹性的蹦跳动画/">【css3效果】有弹性的蹦跳动画</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2016/06/16/【转】JavaScript的事件代理和委托实例分析/">【转】JavaScript的事件代理和委托实例分析</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2016/05/27/【css3效果】用css3绘制发光字/">【css3效果】用css3绘制发光字</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 linheqiang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="/blog/js/jquery.min.js"></script>">
+
+
+  <link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css">
+  <script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/blog/js/script.js"></script>
+
+  </div>
+</body>
+</html>
