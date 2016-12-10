@@ -1100,12 +1100,13 @@ a.article-title:hover {
 .article-entry pre,
 .article-entry .highlight {
   background: #2d2d2d;
-  margin: 0 -20px;
+  margin: auto;
   padding: 15px 20px;
   border-style: solid;
   border-color: #ddd;
   border-width: 1px 0;
   overflow: auto;
+  border-radius: 8px;
   color: #ccc;
   line-height: 22.400000000000002px;
 }

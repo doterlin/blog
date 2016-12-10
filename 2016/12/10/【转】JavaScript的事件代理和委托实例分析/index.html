@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>【转】JavaScript的事件代理和委托实例分析 | Doterlin&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文属转载，原文链接请点这里,一篇好的文章需要好的重新排版。在javasript中delegate这个词经常出现，看字面的意思，代理、委托。在各种框架中，也经常能看到delegate相关的接口。这些接口又有什么特殊的用法呢？这篇文章就主要通过实例介绍一下javascript delegate的用法和原理。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【转】JavaScript的事件代理和委托实例分析">
+<meta property="og:url" content="https://doterlin.github.io/blog/2016/12/10/【转】JavaScript的事件代理和委托实例分析/index.html">
+<meta property="og:site_name" content="Doterlin's Blog">
+<meta property="og:description" content="本文属转载，原文链接请点这里,一篇好的文章需要好的重新排版。在javasript中delegate这个词经常出现，看字面的意思，代理、委托。在各种框架中，也经常能看到delegate相关的接口。这些接口又有什么特殊的用法呢？这篇文章就主要通过实例介绍一下javascript delegate的用法和原理。">
+<meta property="og:image" content="https://doterlin.github.io/blog/blog/img/201612/3.png">
+<meta property="og:updated_time" content="2016-12-10T04:10:54.755Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【转】JavaScript的事件代理和委托实例分析">
+<meta name="twitter:description" content="本文属转载，原文链接请点这里,一篇好的文章需要好的重新排版。在javasript中delegate这个词经常出现，看字面的意思，代理、委托。在各种框架中，也经常能看到delegate相关的接口。这些接口又有什么特殊的用法呢？这篇文章就主要通过实例介绍一下javascript delegate的用法和原理。">
+<meta name="twitter:image" content="https://doterlin.github.io/blog/blog/img/201612/3.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Doterlin&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="http://fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/blog/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">Doterlin&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/blog/" id="subtitle">风萧萧兮易水寒，码农一去不复还</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://doterlin.github.io/blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-【转】JavaScript的事件代理和委托实例分析" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2016/12/10/【转】JavaScript的事件代理和委托实例分析/" class="article-date">
+  <time datetime="2016-12-10T04:00:23.000Z" itemprop="datePublished">2016-12-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【转】JavaScript的事件代理和委托实例分析
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文属转载，原文链接请点<a href="http://www.jb51.net/article/62811.htm" target="_blank" rel="external">这里</a>,一篇好的文章需要好的重新排版。<br>在<code>javasript</code>中<code>delegate</code>这个词经常出现，看字面的意思，代理、委托。在各种框架中，也经常能看到delegate相关的接口。这些接口又有什么特殊的用法呢？这篇文章就主要通过实例介绍一下<code>javascript</code> <code>delegate</code>的用法和原理。<br><a id="more"></a><br>在<code>JavaScript</code>中，经常会碰到要监听列表中多项<code>li</code>的情形，假设我们有一个列表如下：<br>代码如下:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"list"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"item1"</span>&gt;</span>item1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"item2"</span>&gt;</span>item2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"item3"</span>&gt;</span>item3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"item4"</span>&gt;</span>item4<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>如果我们要实现以下功能：当鼠标点击某一li时，alert输出该li的内容，我们通常的写法是这样的：</p>
+<ul>
+<li>当列表项比较少时，直接给每个li添加onclick事件</li>
+<li>列表项比较多时，在onload时就给每个列表项调用监听<br>第一种方法比较简单直接，但是没有顾及到html与JavaScript的分离，不建议使用，第二种方法的代码如下：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.onload=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> ulNode=<span class="built_in">document</span>.getElementById(<span class="string">"list"</span>);</div><div class="line">  <span class="keyword">var</span> liNodes=ulNode.childNodes||ulNode.children;</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;liNodes.length;i++)&#123;</div><div class="line">    liNodes[i].addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">      alert(e.target.innerHTML);</div><div class="line">    &#125;,<span class="literal">false</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>由上可以看出来，假如不停的删除或添加<code>li</code>，则<code>function()</code>也要不停的更改操作，易出错，因此推荐使用事件代理，在使用事件代理之前，我们先来了解一下<code>事件阶段</code>(event phase)：</p>
+<p>##事件阶段<br>当一个DOM事件被触发的时候，他并不是只在它的起源对象上触发一次，而是会经历三个不同的阶段。简而言之：事件一开始从文档的根节点流向目标对象(捕获阶段)，然后在目标对向上被触发(目标阶段)，之后再回溯到文档的根节点(冒泡阶段)如图所示（图片来自W3C）:<br><img src="/blog/img/201612/3.png" alt=""></p>
+<p>##事件捕获阶段(Capture Phase)<br>事件的第一个阶段是捕获阶段。事件从文档的根节点出发，随着DOM树的结构向事件的目标节点流去。途中经过各个层次的DOM节点，并在各节点上触发捕获事件，直到到达时间的目标节点。捕获阶段的主要任务是简历传播路径，在冒泡阶段，时间会通过这个路径回溯到文档根节点。<br>代码如下:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.removeEventListener(&lt;event-name&gt;, &lt;callback&gt;, &lt;use-capture&gt;);</div></pre></td></tr></table></figure></p>
+<p>我们通过上面的这个函数来给节点设置监听，可以通过将;设置成<code>true</code>来为事件的捕获阶段添加监听回调函数。在实际应用中，我们并没有太多使用捕获阶段监听的用例，但是通过在捕获阶段对事件的处理，我们可以阻止类似click事件在某个特定元素上被触发。<br>代码如下:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> form=<span class="built_in">document</span>.querySeletor(<span class="string">'form'</span>);</div><div class="line">form.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">  e.stopPropagation();</div><div class="line">&#125;,<span class="literal">true</span>);</div></pre></td></tr></table></figure></p>
+<p>如果你对这种用法不是很了解的话，最好还是将设置为false或者undefined，从而在冒泡阶段对事件进行监听。</p>
+<p>##目标阶段(Target Phase)<br>当事件到达目标节点时，事件就进入了目标阶段。事件在目标节点上被触发，然后逆向回流，知道传播到最外层的文档节点。<br>对于多层嵌套的节点，鼠标和指针事件经常会被定位到最里层的元素上。假设，你在一个div元素上设置了click的监听函数，而用户点击在了这个div元素内部的p元素上，那么p元素就是这个时间的目标元素。事件冒泡让我们可以在这个div或者更上层的元素上监听click事件，并且时间传播过程中触发回调函数。</p>
+<p>##冒泡阶段(Bubble Phase)<br>事件在目标事件上触发后，并不在这个元素上终止。它会随着DOM树一层层向上冒泡，直到到达最外层的根节点。也就是说，同一事件会一次在目标节点的父节点，父节点的父节点…直到最外层的节点上触发。<br>绝大多数事件是会冒泡的，但并非所有的。具体可见：规范说明<br>由上我们可以想到，可以使用事件代理来实现对每一个li的监听。代码如下：<br>代码如下:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.onload=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> ulNode=<span class="built_in">document</span>.getElementById(<span class="string">"list"</span>);</div><div class="line">  ulNode.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">       <span class="keyword">if</span>(e.target&amp;&amp;e.target.nodeName.toUpperCase()==<span class="string">"LI"</span>)&#123;<span class="comment">/*判断目标事件是否为li*/</span></div><div class="line">         alert(e.target.innerHTML);</div><div class="line">       &#125;</div><div class="line">     &#125;,<span class="literal">false</span>);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>以上所述就是本文的全部内容了，希望能够对大家熟悉javascript事件的委托和代理能够有所帮助。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://doterlin.github.io/blog/blog/2016/12/10/【转】JavaScript的事件代理和委托实例分析/" data-id="ciwipetk60004vkl1dr0hfl9a" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/javascript/">javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2016/12/04/致新博客正式建成的这一天！/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">致新博客正式建成的这一天！</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/MVVM/">MVVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Other/">Other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/css3/">css3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/javascript/">javascript</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/blog/tags/MVVM/" style="font-size: 10px;">MVVM</a> <a href="/blog/tags/Other/" style="font-size: 10px;">Other</a> <a href="/blog/tags/React/" style="font-size: 10px;">React</a> <a href="/blog/tags/css3/" style="font-size: 15px;">css3</a> <a href="/blog/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/blog/tags/javascript/" style="font-size: 20px;">javascript</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/03/">三月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2016/12/10/【转】JavaScript的事件代理和委托实例分析/">【转】JavaScript的事件代理和委托实例分析</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2016/12/04/致新博客正式建成的这一天！/">致新博客正式建成的这一天！</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2016/06/24/【css3效果】有弹性的蹦跳动画/">【css3效果】有弹性的蹦跳动画</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2016/05/27/【css3效果】用css3绘制发光字/">【css3效果】用css3绘制发光字</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2016/04/23/【踩坑记录】一个新手几乎都踩过的坑/">【踩坑记录】一个新手几乎都踩过的坑...</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 linheqiang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="/blog/js/jquery.min.js"></script>">
+
+
+  <link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css">
+  <script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/blog/js/script.js"></script>
+
+  </div>
+</body>
+</html>

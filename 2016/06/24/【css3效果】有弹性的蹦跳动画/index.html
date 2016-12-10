@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>【css3效果】有弹性的蹦跳动画 | Doterlin&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="之前在工作中给banner加了一个动画，效果看起来还不错，就抽出来。这个可以用在一个礼品盒啦、小动物啦、大标题啦等等场景。这里就只是纯css展示。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【css3效果】有弹性的蹦跳动画">
+<meta property="og:url" content="https://doterlin.github.io/blog/2016/06/24/【css3效果】有弹性的蹦跳动画/index.html">
+<meta property="og:site_name" content="Doterlin's Blog">
+<meta property="og:description" content="之前在工作中给banner加了一个动画，效果看起来还不错，就抽出来。这个可以用在一个礼品盒啦、小动物啦、大标题啦等等场景。这里就只是纯css展示。">
+<meta property="og:updated_time" content="2016-12-10T03:56:57.678Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【css3效果】有弹性的蹦跳动画">
+<meta name="twitter:description" content="之前在工作中给banner加了一个动画，效果看起来还不错，就抽出来。这个可以用在一个礼品盒啦、小动物啦、大标题啦等等场景。这里就只是纯css展示。">
+  
+    <link rel="alternate" href="/atom.xml" title="Doterlin&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="http://fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/blog/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">Doterlin&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/blog/" id="subtitle">风萧萧兮易水寒，码农一去不复还</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://doterlin.github.io/blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-【css3效果】有弹性的蹦跳动画" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2016/06/24/【css3效果】有弹性的蹦跳动画/" class="article-date">
+  <time datetime="2016-06-24T07:02:40.000Z" itemprop="datePublished">2016-06-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【css3效果】有弹性的蹦跳动画
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>之前在工作中给banner加了一个动画，效果看起来还不错，就抽出来。<br>这个可以用在一个礼品盒啦、小动物啦、大标题啦等等场景。这里就只是纯css展示。<br><a id="more"></a><br>上代码,演示地址请点<a href="http://www.qdfuns.com/notes/15285/a1692e4be91960ec8f1c20209ffc2fd3.html" target="_blank" rel="external">这里</a>：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>【css3炫酷效果 二】有弹性的蹦跳动画<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line">body&#123;</div><div class="line">	margin:0;</div><div class="line">	padding:0;</div><div class="line">&#125;</div><div class="line">.jump&#123;</div><div class="line">	width:80px;</div><div class="line">	height:70px;</div><div class="line">	background:#000;</div><div class="line">	margin:30px auto;</div><div class="line">	-webkit-animation:cute-btn 1.6s infinite;</div><div class="line">	animation:cute-btn 1.6s infinite;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@-webkit-keyframes cute-btn &#123;from &#123;-webkit-transform:scale3d(1, 1, 1) translateY(0);transform:scale3d(1, 1, 1) translateY(0); &#125;</div><div class="line">5% &#123;-webkit-transform:scale3d(1.03, 0.97, 1) translateY(-1px);transform:scale3d(1.03, 0.97, 1) translateY(-1px); &#125;</div><div class="line">12.5% &#123;-webkit-transform:scale3d(1, 1, 1) translateY(-10px);transform:scale3d(1, 1, 1) translateY(-10px); &#125;</div><div class="line">20% &#123;-webkit-transform:scale3d(0.98, 1.02, 1) translateY(-1px);transform:scale3d(0.98, 1.02, 1) translateY(-1px); &#125;</div><div class="line">25% &#123;-webkit-transform:scale3d(1.06, 0.94, 1) translateY(0);transform:scale3d(1.06, 0.94, 1) translateY(0); &#125;</div><div class="line">32.5% &#123;-webkit-transform:scale3d(0.97, 1.03, 1) translateY(-4px);transform:scale3d(0.97, 1.03, 1) translateY(-4px); &#125;</div><div class="line">40% &#123;-webkit-transform:scale3d(1, 1, 1) translateY(0);transform:scale3d(1, 1, 1) translateY(0); &#125;</div><div class="line">100% &#123;-webkit-transform:scale3d(1, 1, 1) translateY(0);transform:scale3d(1, 1, 1) translateY(0); &#125;</div><div class="line"> &#125;</div><div class="line">@keyframes cute-btn &#123;from &#123;-webkit-transform:scale3d(1, 1, 1) translateY(0);transform:scale3d(1, 1, 1) translateY(0); &#125;</div><div class="line">5% &#123;-webkit-transform:scale3d(1.03, 0.97, 1) translateY(-1px);transform:scale3d(1.03, 0.97, 1) translateY(-1px); &#125;</div><div class="line">12.5% &#123;-webkit-transform:scale3d(1, 1, 1) translateY(-10px);transform:scale3d(1, 1, 1) translateY(-10px); &#125;</div><div class="line">20% &#123;-webkit-transform:scale3d(0.98, 1.02, 1) translateY(-1px);transform:scale3d(0.98, 1.02, 1) translateY(-1px); &#125;</div><div class="line">25% &#123;-webkit-transform:scale3d(1.06, 0.94, 1) translateY(0);transform:scale3d(1.06, 0.94, 1) translateY(0); &#125;</div><div class="line">32.5% &#123;-webkit-transform:scale3d(0.97, 1.03, 1) translateY(-4px);transform:scale3d(0.97, 1.03, 1) translateY(-4px); &#125;</div><div class="line">40% &#123;-webkit-transform:scale3d(1, 1, 1) translateY(0);transform:scale3d(1, 1, 1) translateY(0); &#125;</div><div class="line">100% &#123;-webkit-transform:scale3d(1, 1, 1) translateY(0);transform:scale3d(1, 1, 1) translateY(0); &#125;</div><div class="line"> &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"jump"</span>&gt;</span><span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://doterlin.github.io/blog/blog/2016/06/24/【css3效果】有弹性的蹦跳动画/" data-id="ciwipetjq0001vkl1eeemzlae" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/css3/">css3</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2016/12/04/致新博客正式建成的这一天！/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          致新博客正式建成的这一天！
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog/2016/05/27/【css3效果】用css3绘制发光字/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">【css3效果】用css3绘制发光字</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/MVVM/">MVVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Other/">Other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/css3/">css3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/javascript/">javascript</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/blog/tags/MVVM/" style="font-size: 10px;">MVVM</a> <a href="/blog/tags/Other/" style="font-size: 10px;">Other</a> <a href="/blog/tags/React/" style="font-size: 10px;">React</a> <a href="/blog/tags/css3/" style="font-size: 15px;">css3</a> <a href="/blog/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/blog/tags/javascript/" style="font-size: 20px;">javascript</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2016/03/">三月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2016/12/10/【转】JavaScript的事件代理和委托实例分析/">【转】JavaScript的事件代理和委托实例分析</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2016/12/04/致新博客正式建成的这一天！/">致新博客正式建成的这一天！</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2016/06/24/【css3效果】有弹性的蹦跳动画/">【css3效果】有弹性的蹦跳动画</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2016/05/27/【css3效果】用css3绘制发光字/">【css3效果】用css3绘制发光字</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2016/04/23/【踩坑记录】一个新手几乎都踩过的坑/">【踩坑记录】一个新手几乎都踩过的坑...</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 linheqiang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="/blog/js/jquery.min.js"></script>">
+
+
+  <link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css">
+  <script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/blog/js/script.js"></script>
+
+  </div>
+</body>
+</html>

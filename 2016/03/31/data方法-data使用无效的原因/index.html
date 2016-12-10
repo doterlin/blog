@@ -3,21 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>致新博客正式建成的这一天！ | Doterlin&#39;s Blog</title>
+  <title>诡异的jquery data()方法--data()使用无效的原因 | Doterlin&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="你并不是一个只会写代码的机器，而是在生活中有热血有情结的小伙子…">
+  <meta name="description" content="大家都知道$(‘’).data()能获取或操作DOM上的data-*属性值，但我在使用过程中并不止一次发现有时候data()方法是无法获取属性值(undefine)或获取不正确的，而使用attr()方法就能正常使用。所以大家在使用data()无效时，就只能改用attr()吧。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="致新博客正式建成的这一天！">
-<meta property="og:url" content="https://doterlin.github.io/blog/2016/12/04/致新博客正式建成的这一天！/index.html">
+<meta property="og:title" content="诡异的jquery data()方法--data()使用无效的原因">
+<meta property="og:url" content="https://doterlin.github.io/blog/2016/03/31/data方法-data使用无效的原因/index.html">
 <meta property="og:site_name" content="Doterlin's Blog">
-<meta property="og:description" content="你并不是一个只会写代码的机器，而是在生活中有热血有情结的小伙子…">
-<meta property="og:image" content="https://doterlin.github.io/blog/blog/img/201612/1.png">
-<meta property="og:image" content="https://doterlin.github.io/blog/blog/img/201612/2.png">
-<meta property="og:updated_time" content="2016-12-10T03:00:29.937Z">
+<meta property="og:description" content="大家都知道$(‘’).data()能获取或操作DOM上的data-*属性值，但我在使用过程中并不止一次发现有时候data()方法是无法获取属性值(undefine)或获取不正确的，而使用attr()方法就能正常使用。所以大家在使用data()无效时，就只能改用attr()吧。">
+<meta property="og:updated_time" content="2016-12-10T03:44:39.582Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="致新博客正式建成的这一天！">
-<meta name="twitter:description" content="你并不是一个只会写代码的机器，而是在生活中有热血有情结的小伙子…">
-<meta name="twitter:image" content="https://doterlin.github.io/blog/blog/img/201612/1.png">
+<meta name="twitter:title" content="诡异的jquery data()方法--data()使用无效的原因">
+<meta name="twitter:description" content="大家都知道$(‘’).data()能获取或操作DOM上的data-*属性值，但我在使用过程中并不止一次发现有时候data()方法是无法获取属性值(undefine)或获取不正确的，而使用attr()方法就能正常使用。所以大家在使用data()无效时，就只能改用attr()吧。">
   
     <link rel="alternate" href="/atom.xml" title="Doterlin&#39;s Blog" type="application/atom+xml">
   
@@ -70,10 +67,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-致新博客正式建成的这一天！" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-data方法-data使用无效的原因" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/blog/2016/12/04/致新博客正式建成的这一天！/" class="article-date">
-  <time datetime="2016-12-04T03:12:19.000Z" itemprop="datePublished">2016-12-04</time>
+    <a href="/blog/2016/03/31/data方法-data使用无效的原因/" class="article-date">
+  <time datetime="2016-03-31T02:39:03.000Z" itemprop="datePublished">2016-03-31</time>
 </a>
     
   </div>
@@ -84,7 +81,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      致新博客正式建成的这一天！
+      诡异的jquery data()方法--data()使用无效的原因
     </h1>
   
 
@@ -92,31 +89,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>你并不是一个只会写代码的机器，而是在生活中有热血有情结的小伙子…<br><a id="more"></a></p>
-<h2 id="大概是前言"><a href="#大概是前言" class="headerlink" title="大概是前言"></a>大概是前言</h2><p>想在<code>github</code>上建博客的原因想必大家也是类似的：</p>
-<ul>
-<li>在第三方网站放文章，哪天网站挂了,呵呵…还是在git上放心</li>
-<li>想拥有属于自己的域名的博客</li>
-<li>显得自己专业…</li>
-<li>最重要的是——想怎么装逼就怎么装逼 (完全自由控制样式)</li>
-</ul>
-<p>决定在<code>github</code>上搞blog后，我先是试着用<code>jekyll</code>，装了<code>Ruby</code>后gem包硬是下载不下来，没办法果断放弃了。<br>后来就用了<code>Hexo</code>，感觉就爽的一B，安装方式和各种流程很近亲前端。很推荐前端的同学们使用<code>Hexo</code>来搭建blog，网上教程很多，在这里不做再多<code>Hexo</code>介绍啦。<br>顺便给大家安利一个使用小技巧(针对windows同学)：<br>重装git，在到这一步时选择第三个选项：<br><img src="/blog/img/201612/1.png" alt="重装git"></p>
-<p>这样可以将<code>git</code>在命令行中运行，这样就能正常使用<code>hexo server</code>命令。并且在使用cmd不用新开一个git bash窗口了。<br><img src="/blog/img/201612/2.png" alt=""></p>
-<h2 id="先定他个小目标"><a href="#先定他个小目标" class="headerlink" title="先定他个小目标"></a>先定他个小目标</h2><p>先定他个小目标，<code>每个月至少写两篇文章</code>。我也知道，按照自己的个性，是不允许有太渣渣太短的文章发出去的。<br>所以每个月如果能保证写两篇自己认为质量够的文章，也算是不错。积少成多，一年下来就有至少24篇文章。还算说得过去。</p>
-<h2 id="怎么看待技术博客"><a href="#怎么看待技术博客" class="headerlink" title="怎么看待技术博客"></a>怎么看待技术博客</h2><p>技术博客在我看来并不只是一个讨论技术的地方，我看到有些大大喜欢在自己的博客里面写游记，写生活的心得，写心灵鸡汤。<br>我觉得有了这些内容更能丰富你的博客，因为能让别人看到，<code>你并不是一个只会写代码的机器</code>，而是在生活中有热血有情结的小伙子。<br>写到这里，在听着陶喆的《就是爱你》的自己也突然也有感动。<br>这并不是对自己文采的自恋(haha…)，只是有时候在心里隐藏的东西，用文字表达出来就显得更加明朗，对自己的影响也会更大。<br>所以说，我会在自己的技术博客中讨论技术和人生，情感，生活的种种。当然还是会以技术性文章为主。</p>
-<h2 id="给自己点鸡汤"><a href="#给自己点鸡汤" class="headerlink" title="给自己点鸡汤"></a>给自己点鸡汤</h2><p>正好，昨天跟公司的同事们去军事拓展训练。<br>最后一项任务是：</p>
-<blockquote>
-<p>二十多个人在不借助任何工具的情况下全部爬上<code>4.2米</code>。<br>我惊讶大家能这么快的完成了。<br>在繁华的都市，<code>人容易忘了一种叫意志的东西</code>。当初执着朴实的自己已经被磨平了棱角。</p>
-</blockquote>
-<p>我希望自己，也希望在城市中打拼的各位能<code>不忘初心</code>，做好自己。</p>
+        <p>大家都知道$(‘’).data()能获取或操作DOM上的<code>data-*</code>属性值，但我在使用过程中并不止一次发现有时候<code>data()</code>方法是无法获取属性值(<code>undefine</code>)或获取不正确的，而使用<code>attr()</code>方法就能正常使用。所以大家在使用<code>data()</code>无效时，就只能改用<code>attr()</code>吧。</p>
+<a id="more"></a>
+<p>这里我们看下data和attr的工作过程，可能能找出原因：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">"a"</span> <span class="attr">data-xxx</span>=<span class="string">"00123"</span> /&gt;</span> </div><div class="line">alert($('#a').data('xxx')); //'123'</div></pre></td></tr></table></figure>
+<p>没错，这段代码输出的是<code>&#39;123&#39;</code>，再看看下面这段，估计就清楚多了:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">data-role</span>=<span class="string">"page"</span> <span class="attr">data-last-value</span>=<span class="string">"43"</span> <span class="attr">data-hidden</span>=<span class="string">"true"</span> <span class="attr">data-options</span>=<span class="string">'&#123;"name":"John"&#125;'</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span> </div><div class="line">$("div").data("role");         //"page"; </div><div class="line">$("div").data("lastValue");    //43; </div><div class="line">$("div").data("hidden");       //true; </div><div class="line">$("div").data("options").name; //"John";</div></pre></td></tr></table></figure></p>
+<p>即当使用<code>.data()</code>获取值时，<code>jQuery</code>会首先尝试将获取的字符串值转化成JS类型，包括布尔值，<code>null</code>，数字，对象，数组：<br>若值是”true|false”，则返回相应的布尔值；<br>若值是”null”，则返回<code>null</code>；<br>若值是纯数字构成的字符串（+data + “” === data），则返回相应的数字（+data）；<br>若值是由(?:{[\s\S]<em>}|[[\s\S]</em>])$，比如”{key:value}”或[1,2,3]，则尝试使用jQuery.parseJSON解析之；<br><code>如果就是想获取字符串值而不想获得自动转换的值，可以使用.attr(&quot;data-&quot;+key)来获取相应的值。</code></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://doterlin.github.io/blog/blog/2016/12/04/致新博客正式建成的这一天！/" data-id="ciwipetk60005vkl1661n4d3x" class="article-share-link">Share</a>
+      <a data-url="https://doterlin.github.io/blog/blog/2016/03/31/data方法-data使用无效的原因/" data-id="ciwipetjq0000vkl1jfk3cwy3" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Other/">Other</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/jQuery/">jQuery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/javascript/">javascript</a></li></ul>
 
     </footer>
   </div>
@@ -124,20 +110,15 @@
     
 <nav id="article-nav">
   
-    <a href="/blog/2016/12/10/【转】JavaScript的事件代理和委托实例分析/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/blog/2016/04/04/什么是虚拟DOM？/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          【转】JavaScript的事件代理和委托实例分析
+          什么是虚拟DOM？
         
       </div>
     </a>
   
-  
-    <a href="/blog/2016/06/24/【css3效果】有弹性的蹦跳动画/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">【css3效果】有弹性的蹦跳动画</div>
-    </a>
   
 </nav>
 
