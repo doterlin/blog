@@ -3,18 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>什么是虚拟DOM？ | Doterlin&#39;s Blog</title>
+  <title>致新博客正式建成的这一天！ | Doterlin&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="（摘抄自一篇文章，觉得这里写得非常不错，所以单独放出来，希望能对大家有帮助。）React为啥这么大？因为它实现了一个虚拟DOM（Virtual DOM）。虚拟DOM是干什么的？这就要从浏览器本身讲起。">
+  <meta name="description" content="你并不是一个只会写代码的机器，而是在生活中有热血有情结的小伙子…
+大概是前言由于有一些文章是从我在别的站上迁移过来的，所以时间会比这篇&amp;#39;类处女篇&amp;#39;文章还早。想在github上建博客的原因想必大家也是类似的：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="什么是虚拟DOM？">
-<meta property="og:url" content="https://doterlin.github.io/blog/2016/04/04/什么是虚拟DOM？/index.html">
+<meta property="og:title" content="致新博客正式建成的这一天！">
+<meta property="og:url" content="https://doterlin.github.io/blog/2016/12/04/first/index.html">
 <meta property="og:site_name" content="Doterlin's Blog">
-<meta property="og:description" content="（摘抄自一篇文章，觉得这里写得非常不错，所以单独放出来，希望能对大家有帮助。）React为啥这么大？因为它实现了一个虚拟DOM（Virtual DOM）。虚拟DOM是干什么的？这就要从浏览器本身讲起。">
-<meta property="og:updated_time" content="2016-12-10T19:31:58.448Z">
+<meta property="og:description" content="你并不是一个只会写代码的机器，而是在生活中有热血有情结的小伙子…
+大概是前言由于有一些文章是从我在别的站上迁移过来的，所以时间会比这篇&amp;#39;类处女篇&amp;#39;文章还早。想在github上建博客的原因想必大家也是类似的：">
+<meta property="og:image" content="https://doterlin.github.io/blog/blog/img/201612/1.png">
+<meta property="og:image" content="https://doterlin.github.io/blog/blog/img/201612/2.png">
+<meta property="og:updated_time" content="2016-12-10T19:32:48.096Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="什么是虚拟DOM？">
-<meta name="twitter:description" content="（摘抄自一篇文章，觉得这里写得非常不错，所以单独放出来，希望能对大家有帮助。）React为啥这么大？因为它实现了一个虚拟DOM（Virtual DOM）。虚拟DOM是干什么的？这就要从浏览器本身讲起。">
+<meta name="twitter:title" content="致新博客正式建成的这一天！">
+<meta name="twitter:description" content="你并不是一个只会写代码的机器，而是在生活中有热血有情结的小伙子…
+大概是前言由于有一些文章是从我在别的站上迁移过来的，所以时间会比这篇&amp;#39;类处女篇&amp;#39;文章还早。想在github上建博客的原因想必大家也是类似的：">
+<meta name="twitter:image" content="https://doterlin.github.io/blog/blog/img/201612/1.png">
   
     <link rel="alternate" href="/atom.xml" title="Doterlin&#39;s Blog" type="application/atom+xml">
   
@@ -67,10 +73,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-什么是虚拟DOM？" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-first" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/blog/2016/04/04/什么是虚拟DOM？/" class="article-date">
-  <time datetime="2016-04-04T06:06:48.000Z" itemprop="datePublished">2016-04-04</time>
+    <a href="/blog/2016/12/04/first/" class="article-date">
+  <time datetime="2016-12-04T03:12:19.000Z" itemprop="datePublished">2016-12-04</time>
 </a>
     
   </div>
@@ -81,7 +87,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      什么是虚拟DOM？
+      致新博客正式建成的这一天！
     </h1>
   
 
@@ -89,18 +95,33 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>（摘抄自一篇文章，觉得这里写得非常不错，所以单独放出来，希望能对大家有帮助。）<br><code>React</code>为啥这么大？因为它实现了一个<code>虚拟DOM</code>（Virtual DOM）。<code>虚拟DOM</code>是干什么的？这就要从浏览器本身讲起。<br><a id="more"></a><br>如我们所知，在浏览器渲染网页的过程中，加载到HTML文档后，会将文档解析并构建DOM树，然后将其与解析CSS生成的CSSOM树一起结合产生爱的结晶——RenderObject树，然后将RenderObject树渲染成页面（当然中间可能会有一些优化，比如RenderLayer树）。这些过程都存在与渲染引擎之中，渲染引擎在浏览器中是于JavaScript引擎（JavaScriptCore也好V8也好）分离开的，但为了方便JS操作DOM结构，渲染引擎会暴露一些接口供JavaScript调用。由于这两块相互分离，通信是需要付出代价的，因此JavaScript调用DOM提供的接口性能不咋地。各种性能优化的最佳实践也都在尽可能的减少DOM操作次数。</p>
-<p>而虚拟DOM干了什么？它直接用JavaScript实现了DOM树（大致上）。组件的HTML结构并不会直接生成DOM，而是映射生成虚拟的JavaScript DOM结构，React又通过在这个虚拟DOM上实现了一个 diff 算法找出最小变更，再把这些变更写入实际的DOM中。这个虚拟DOM以JS结构的形式存在，计算性能会比较好，而且由于减少了实际DOM操作次数，性能会有较大提升。</p>
+        <p>你并不是一个只会写代码的机器，而是在生活中有热血有情结的小伙子…</p>
+<h2 id="大概是前言"><a href="#大概是前言" class="headerlink" title="大概是前言"></a>大概是前言</h2><p><code>由于有一些文章是从我在别的站上迁移过来的，所以时间会比这篇&#39;类处女篇&#39;文章还早。</code><br>想在<code>github</code>上建博客的原因想必大家也是类似的：<br><a id="more"></a></p>
+<ul>
+<li>在第三方网站放文章，哪天网站挂了,呵呵…还是在git上放心</li>
+<li>想拥有属于自己的域名的博客</li>
+<li>显得自己专业…</li>
+<li>最重要的是——想怎么装逼就怎么装逼 (完全自由控制样式)</li>
+</ul>
+<p>决定在<code>github</code>上搞blog后，我先是试着用<code>jekyll</code>，装了<code>Ruby</code>后gem包硬是下载不下来，没办法果断放弃了。<br>后来就用了<code>Hexo</code>，感觉就爽的一B，安装方式和各种流程很近亲前端。很推荐前端的同学们使用<code>Hexo</code>来搭建blog，网上教程很多，在这里不做再多<code>Hexo</code>介绍啦。<br>顺便给大家安利一个使用小技巧(针对windows同学)：<br>重装git，在到这一步时选择第三个选项：<br><img src="/blog/img/201612/1.png" alt="重装git"></p>
+<p>这样可以将<code>git</code>在命令行中运行，这样就能正常使用<code>hexo server</code>命令。并且在使用cmd不用新开一个git bash窗口了。<br><img src="/blog/img/201612/2.png" alt=""></p>
+<h2 id="先定他个小目标"><a href="#先定他个小目标" class="headerlink" title="先定他个小目标"></a>先定他个小目标</h2><p>先定他个小目标，<code>每个月至少写两篇文章</code>。我也知道，按照自己的个性，是不允许有太渣渣太短的文章发出去的。<br>所以每个月如果能保证写两篇自己认为质量够的文章，也算是不错。积少成多，一年下来就有至少24篇文章。还算说得过去。</p>
+<h2 id="怎么看待技术博客"><a href="#怎么看待技术博客" class="headerlink" title="怎么看待技术博客"></a>怎么看待技术博客</h2><p>技术博客在我看来并不只是一个讨论技术的地方，我看到有些大大喜欢在自己的博客里面写游记，写生活的心得，写心灵鸡汤。<br>我觉得有了这些内容更能丰富你的博客，因为能让别人看到，<code>你并不是一个只会写代码的机器</code>，而是在生活中有热血有情结的小伙子。<br>写到这里，在听着陶喆的《就是爱你》的自己也突然也有感动。<br>这并不是对自己文采的自恋(haha…)，只是有时候在心里隐藏的东西，用文字表达出来就显得更加明朗，对自己的影响也会更大。<br>所以说，我会在自己的技术博客中讨论技术和人生，情感，生活的种种。当然还是会以技术性文章为主。</p>
+<h2 id="给自己点鸡汤"><a href="#给自己点鸡汤" class="headerlink" title="给自己点鸡汤"></a>给自己点鸡汤</h2><p>正好，昨天跟公司的同事们去军事拓展训练。<br>最后一项任务是：</p>
+<blockquote>
+<p>二十多个人在不借助任何工具的情况下全部爬上<code>4.2米</code>。</p>
+</blockquote>
+<p>我惊讶大家能这么快的完成了，慢慢的体会到，在繁华的都市，<code>人容易忘了一种叫意志的东西</code>。当初执着朴实的自己已经被磨平了棱角。我可能再也看不到那个老实憨厚的农村小伙子的自己。<br>我希望自己，也希望在城市中打拼的各位能<code>不忘初心</code>，做好自己。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://doterlin.github.io/blog/blog/2016/04/04/什么是虚拟DOM？/" data-id="ciwk97scm000m84l1lgm0k2np" class="article-share-link">Share</a>
+      <a data-url="https://doterlin.github.io/blog/blog/2016/12/04/first/" data-id="ciwk97sbt000184l1pbd8vede" class="article-share-link">Share</a>
       
-        <a href="https://doterlin.github.io/blog/blog/2016/04/04/什么是虚拟DOM？/#disqus_thread" class="article-comment-link">留言</a>
+        <a href="https://doterlin.github.io/blog/blog/2016/12/04/first/#disqus_thread" class="article-comment-link">留言</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/MVVM/">MVVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/React/">React</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/javascript/">javascript</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Other/">Other</a></li></ul>
 
     </footer>
   </div>
@@ -108,19 +129,10 @@
     
 <nav id="article-nav">
   
-    <a href="/blog/2016/04/23/【踩坑记录】一个新手几乎都踩过的坑/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          【踩坑记录】一个新手几乎都踩过的坑...
-        
-      </div>
-    </a>
   
-  
-    <a href="/blog/2016/03/31/data方法-data使用无效的原因/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/blog/2016/07/01/【干货】Array对象的方法大全，看看你知道多少/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">诡异的jquery data()方法--data()使用无效的原因</div>
+      <div class="article-nav-title">【干货】Array对象的方法大全，看看你知道多少.</div>
     </a>
   
 </nav>
@@ -225,7 +237,7 @@
 <script>
   var disqus_shortname = 'Doterlin`s Blog';
   
-  var disqus_url = 'https://doterlin.github.io/blog/blog/2016/04/04/什么是虚拟DOM？/';
+  var disqus_url = 'https://doterlin.github.io/blog/blog/2016/12/04/first/';
   
   (function(){
     var dsq = document.createElement('script');
