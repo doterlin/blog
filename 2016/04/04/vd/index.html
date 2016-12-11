@@ -92,12 +92,12 @@
         <p>（摘抄自一篇文章，觉得这里写得非常不错，所以单独放出来，希望能对大家有帮助。）<br><code>React</code>为啥这么大？因为它实现了一个<code>虚拟DOM</code>（Virtual DOM）。<code>虚拟DOM</code>是干什么的？这就要从浏览器本身讲起。<br><a id="more"></a><br>如我们所知，在浏览器渲染网页的过程中，加载到HTML文档后，会将文档解析并构建DOM树，然后将其与解析CSS生成的CSSOM树一起结合产生爱的结晶——RenderObject树，然后将RenderObject树渲染成页面（当然中间可能会有一些优化，比如RenderLayer树）。这些过程都存在与渲染引擎之中，渲染引擎在浏览器中是于JavaScript引擎（JavaScriptCore也好V8也好）分离开的，但为了方便JS操作DOM结构，渲染引擎会暴露一些接口供JavaScript调用。由于这两块相互分离，通信是需要付出代价的，因此JavaScript调用DOM提供的接口性能不咋地。各种性能优化的最佳实践也都在尽可能的减少DOM操作次数。</p>
 <p>而虚拟DOM干了什么？它直接用JavaScript实现了DOM树（大致上）。组件的HTML结构并不会直接生成DOM，而是映射生成虚拟的JavaScript DOM结构，React又通过在这个虚拟DOM上实现了一个 diff 算法找出最小变更，再把这些变更写入实际的DOM中。这个虚拟DOM以JS结构的形式存在，计算性能会比较好，而且由于减少了实际DOM操作次数，性能会有较大提升。</p>
 
+        <br/>
+        <p><i>欢迎大家转载，请注明出处：</i><br/>Doterlin's Blog <a href="https://doterlin.github.io/blog/2016/04/04/vd/">https://doterlin.github.io/blog/2016/04/04/vd/<a/></p>
       
-      <br/>
-      <p><i>欢迎大家转载，请注明出处：</i><br/>Doterlin's Blog <a href="https://doterlin.github.io/blog/2016/04/04/vd/">https://doterlin.github.io/blog/2016/04/04/vd/<a/></p>
     </div>
     <footer class="article-footer">
-      <a data-url="https://doterlin.github.io/blog/2016/04/04/vd/" data-id="ciwkbfona0009g4l14566b4en" class="article-share-link">Share</a>
+      <a data-url="https://doterlin.github.io/blog/2016/04/04/vd/" data-id="ciwkbl5fz00044gl1a2lkg4rg" class="article-share-link">Share</a>
       
         <a href="https://doterlin.github.io/blog/2016/04/04/vd/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -106,8 +106,9 @@
 
     </footer>
   </div>
+</article>
+
   
-    
 <nav id="article-nav">
   
     <a href="/blog/2016/04/23/http_cache/" id="article-nav-newer" class="article-nav-link-wrap">
@@ -126,8 +127,8 @@
   
 </nav>
 
-  
-</article>
+
+
 
 <section id="comments">
   <div id="disqus_thread">

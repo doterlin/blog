@@ -96,12 +96,12 @@
 <p>没错，这段代码输出的是<code>&#39;123&#39;</code>，再看看下面这段，估计就清楚多了:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">data-role</span>=<span class="string">"page"</span> <span class="attr">data-last-value</span>=<span class="string">"43"</span> <span class="attr">data-hidden</span>=<span class="string">"true"</span> <span class="attr">data-options</span>=<span class="string">'&#123;"name":"John"&#125;'</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span> </div><div class="line">$("div").data("role");         //"page"; </div><div class="line">$("div").data("lastValue");    //43; </div><div class="line">$("div").data("hidden");       //true; </div><div class="line">$("div").data("options").name; //"John";</div></pre></td></tr></table></figure></p>
 <p>即当使用<code>.data()</code>获取值时，<code>jQuery</code>会首先尝试将获取的字符串值转化成JS类型，包括布尔值，<code>null</code>，数字，对象，数组：<br>若值是”true|false”，则返回相应的布尔值；<br>若值是”null”，则返回<code>null</code>；<br>若值是纯数字构成的字符串（+data + “” === data），则返回相应的数字（+data）；<br>若值是由(?:{[\s\S]<em>}|[[\s\S]</em>])$，比如”{key:value}”或[1,2,3]，则尝试使用jQuery.parseJSON解析之；<br><code>如果就是想获取字符串值而不想获得自动转换的值，可以使用.attr(&quot;data-&quot;+key)来获取相应的值。</code></p>
 
+        <br/>
+        <p><i>欢迎大家转载，请注明出处：</i><br/>Doterlin's Blog <a href="https://doterlin.github.io/blog/2016/03/31/data/">https://doterlin.github.io/blog/2016/03/31/data/<a/></p>
       
-      <br/>
-      <p><i>欢迎大家转载，请注明出处：</i><br/>Doterlin's Blog <a href="https://doterlin.github.io/blog/2016/03/31/data/">https://doterlin.github.io/blog/2016/03/31/data/<a/></p>
     </div>
     <footer class="article-footer">
-      <a data-url="https://doterlin.github.io/blog/2016/03/31/data/" data-id="ciwkbfon20004g4l1h27muu5w" class="article-share-link">Share</a>
+      <a data-url="https://doterlin.github.io/blog/2016/03/31/data/" data-id="ciwkbl5fy00034gl1ywlqprcb" class="article-share-link">Share</a>
       
         <a href="https://doterlin.github.io/blog/2016/03/31/data/#disqus_thread" class="article-comment-link">留言</a>
       
@@ -110,8 +110,9 @@
 
     </footer>
   </div>
+</article>
+
   
-    
 <nav id="article-nav">
   
     <a href="/blog/2016/04/04/vd/" id="article-nav-newer" class="article-nav-link-wrap">
@@ -126,8 +127,8 @@
   
 </nav>
 
-  
-</article>
+
+
 
 <section id="comments">
   <div id="disqus_thread">
