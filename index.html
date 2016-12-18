@@ -68,6 +68,65 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-npm-publish" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2016/12/17/npm-publish/" class="article-date">
+  <time datetime="2016-12-17T07:54:59.000Z" itemprop="datePublished">2016-12-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2016/12/17/npm-publish/">如何使用npm发布代码</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>前言<br>当看到别人的代码你只需要使用一行类似这样的命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install xxx</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>就能把代码全部下载下来。你是否也想着自己的代码也能这么便捷的被下载。这就是<code>npm</code>的魅力。</p>
+<h1 id="关于npm"><a href="#关于npm" class="headerlink" title="关于npm"></a>关于npm</h1><p><code>npm</code>大家应该都了解，它是node.js官方的包管理工具。我们只需要在控制台输入一些简单的命令就能使用它来更新，下载，上传node包（<a href="https://www.npmjs.com/）。" target="_blank" rel="external">https://www.npmjs.com/）。</a><br>关于如何安装<code>Node.js</code>和<code>npm</code>本文就不再赘述，大家可以在网上查找资料跟着安装。如果你还没有玩过node，就装一个并跟着我发布上去试试看，保证这是一片广阔的天空。</p>
+<h1 id="在npm发布自己的代码"><a href="#在npm发布自己的代码" class="headerlink" title="在npm发布自己的代码"></a>在npm发布自己的代码</h1><h2 id="1-验证npm"><a href="#1-验证npm" class="headerlink" title="1.验证npm"></a>1.验证npm</h2><p>新建一个文件夹用来存包，进入该文件夹（<code>windows</code>的同学可以<code>按住shift键+右键</code>，选择<code>在此处打开命令窗口</code>来快速调出控制台）。<br>首先需要验证一下你是否安装了<code>npm</code>，如果确认已装请跳过此步,在控制台输入命令:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm -v</div></pre></td></tr></table></figure></p>
+<p>如果显示了一些版本号，就说明你已经安装：<br><img src="/blog/img/201612/4.png" alt=""></p>
+<h2 id="2-新建package-json"><a href="#2-新建package-json" class="headerlink" title="2.新建package.json"></a>2.新建package.json</h2><p>在项目根目录下新建一个<code>package.json</code>，这是一个用来描述你的包的json文件，例如包名，依赖的其他包，作者等等。<br>借助npm来初始化可快速新建，在根目录下输入命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm init</div></pre></td></tr></table></figure></p>
+<p>接着npm会提示你输入一些关于你的包的信息，如果你暂时不知道怎么填那一项就直接按回车就好：<br><img src="/blog/img/201612/5.png" alt=""><br>你会发现你的根目录下多了一个package.json文件。<br>当然<code>name</code>要注意填，它将是你发布出去的npm包名，如果不小心填错了，可以直接在新建好的<code>package.json</code>修改<code>name</code>字段。</p>
+<h2 id="3-编写代码"><a href="#3-编写代码" class="headerlink" title="3.编写代码"></a>3.编写代码</h2><p>虽然npm是允许发布一个空包（只含有<code>package.json</code>的包），但是这样的一个包是没有意义的。<br>我们如果没有代码，可以先加一个<code>README.md</code>（给使用者看的说明书）来说明一下自己的包：<br>在根目录下新建一个<code>README.md</code>文件，输入如下内容：</p>
+<blockquote>
+<p># 这是我的一个npm包<br>未完待续…<br>如果你想好了写说明代码(js,html,css等)请试着放进来。</p>
+</blockquote>
+<h2 id="4-创建npm账号"><a href="#4-创建npm账号" class="headerlink" title="4.创建npm账号"></a>4.创建npm账号</h2><p>如果你没有创建过npm账号，可输入如下命令添加一个npm账号，并跟着提示填写要注册的账号和密码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm adduser</div></pre></td></tr></table></figure></p>
+<h2 id="5-发布！"><a href="#5-发布！" class="headerlink" title="5.发布！"></a>5.发布！</h2><p>现在可以发布了。还是在根目录下输入命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm publish</div></pre></td></tr></table></figure></p>
+<p>如果看到这样的提示，那么恭喜你已经发布了一个npm包：<br><img src="/blog/img/201612/6.png" alt=""></p>
+<p>这样你就可以在<a href="https://www.npmjs.com" target="_blank" rel="external">https://www.npmjs.com</a>搜索并找到你刚才发布的npm包名（例如我的是：article-npm-publish，如果需要登录，请使用刚才你在控制台注册的账号）：<br><img src="/blog/img/201612/7.png" alt=""></p>
+<p>现在，你可以试着使用<code>npm install xxx</code>（xxx为你的包名）来安装自己的包啦。</p>
+<h1 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h1><p>1.如果需要更新包，在修改完代码后请记得修改<code>package.json</code>包的<code>version</code>字段，然后 <code>npm publish</code>。否则会无法发布；<br>2.如果在发布中显示类似’请确认你是否有权限更新xxx包’的英文提示，这就说明你的包名有人使用了。换个名字就好啦。<br>3.如果你想删除一个自己发布过的包，请使用命令 <code>npm unpublish --force xxx</code> （xxx为包名），一些没有意义的包还是建议删掉。</p>
+
+        <br/>
+        <p><i>欢迎大家转载，请注明出处：</i><br/>Doterlin's Blog <a href="https://doterlin.github.io/blog/2016/12/17/npm-publish/">https://doterlin.github.io/blog/2016/12/17/npm-publish/<a/></p>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://doterlin.github.io/blog/2016/12/17/npm-publish/" data-id="ciwub9ihe0009gsl1drwc04sv" class="article-share-link">Share</a>
+      
+        <a href="https://doterlin.github.io/blog/2016/12/17/npm-publish/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+    </footer>
+  </div>
+</article>
+
+
+
+  
     <article id="post-first" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/blog/2016/12/04/first/" class="article-date">
@@ -100,7 +159,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://doterlin.github.io/blog/2016/12/04/first/" data-id="ciwnmvkht000bp8l1u8qfhf5u" class="article-share-link">Share</a>
+      <a data-url="https://doterlin.github.io/blog/2016/12/04/first/" data-id="ciwub9ihe0007gsl1vzv1xby6" class="article-share-link">Share</a>
       
         <a href="https://doterlin.github.io/blog/2016/12/04/first/#ds-thread" class="article-comment-link">留言</a>
       
@@ -146,7 +205,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://doterlin.github.io/blog/2016/07/01/array/" data-id="ciwnmvkh70000p8l11ffsqvpv" class="article-share-link">Share</a>
+      <a data-url="https://doterlin.github.io/blog/2016/07/01/array/" data-id="ciwub9ihe0006gsl1bkw0w7ms" class="article-share-link">Share</a>
       
         <a href="https://doterlin.github.io/blog/2016/07/01/array/#ds-thread" class="article-comment-link">留言</a>
       
@@ -191,7 +250,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://doterlin.github.io/blog/2016/06/24/css3/" data-id="ciwnmvkhb0001p8l1t6qtxwxt" class="article-share-link">Share</a>
+      <a data-url="https://doterlin.github.io/blog/2016/06/24/css3/" data-id="ciwub9igi0001gsl1lhdnh0ce" class="article-share-link">Share</a>
       
         <a href="https://doterlin.github.io/blog/2016/06/24/css3/#ds-thread" class="article-comment-link">留言</a>
       
@@ -239,7 +298,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://doterlin.github.io/blog/2016/06/16/event/" data-id="ciwnmvkhp0009p8l13vuach0f" class="article-share-link">Share</a>
+      <a data-url="https://doterlin.github.io/blog/2016/06/16/event/" data-id="ciwub9ihe000agsl1olluip3e" class="article-share-link">Share</a>
       
         <a href="https://doterlin.github.io/blog/2016/06/16/event/#ds-thread" class="article-comment-link">留言</a>
       
@@ -284,7 +343,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://doterlin.github.io/blog/2016/05/27/01/" data-id="ciwnmvkhf0003p8l1gjs0lg64" class="article-share-link">Share</a>
+      <a data-url="https://doterlin.github.io/blog/2016/05/27/01/" data-id="ciwub9igi0000gsl1iokpv1mr" class="article-share-link">Share</a>
       
         <a href="https://doterlin.github.io/blog/2016/05/27/01/#ds-thread" class="article-comment-link">留言</a>
       
@@ -329,7 +388,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://doterlin.github.io/blog/2016/04/23/http_cache/" data-id="ciwnmvkhk0005p8l169km650k" class="article-share-link">Share</a>
+      <a data-url="https://doterlin.github.io/blog/2016/04/23/http_cache/" data-id="ciwub9iht000egsl1kp6z6ax5" class="article-share-link">Share</a>
       
         <a href="https://doterlin.github.io/blog/2016/04/23/http_cache/#ds-thread" class="article-comment-link">留言</a>
       
@@ -374,7 +433,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://doterlin.github.io/blog/2016/04/04/vd/" data-id="ciwnmvkho0008p8l1p8mg06u6" class="article-share-link">Share</a>
+      <a data-url="https://doterlin.github.io/blog/2016/04/04/vd/" data-id="ciwub9iht000bgsl119f9t4no" class="article-share-link">Share</a>
       
         <a href="https://doterlin.github.io/blog/2016/04/04/vd/#ds-thread" class="article-comment-link">留言</a>
       
@@ -419,7 +478,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://doterlin.github.io/blog/2016/03/31/data/" data-id="ciwnmvkhh0004p8l1kv74pvuz" class="article-share-link">Share</a>
+      <a data-url="https://doterlin.github.io/blog/2016/03/31/data/" data-id="ciwub9ii9000ogsl1sj8f25hq" class="article-share-link">Share</a>
       
         <a href="https://doterlin.github.io/blog/2016/03/31/data/#ds-thread" class="article-comment-link">留言</a>
       
@@ -477,6 +536,10 @@
       <ul>
         
           <li>
+            <a href="/blog/2016/12/17/npm-publish/">如何使用npm发布代码</a>
+          </li>
+        
+          <li>
             <a href="/blog/2016/12/04/first/">致新博客正式建成的这一天！</a>
           </li>
         
@@ -490,10 +553,6 @@
         
           <li>
             <a href="/blog/2016/06/16/event/">【转】JavaScript的事件代理和委托实例分析</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2016/05/27/01/">【css3效果】用css3绘制发光字</a>
           </li>
         
       </ul>
