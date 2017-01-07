@@ -3,18 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>诡异的jquery data()方法--data()使用无效的原因 | Doterlin&#39;s Blog</title>
+  <title>Doterlin&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="大家都知道$(‘’).data()能获取或操作DOM上的data-*属性值，但我在使用过程中并不止一次发现有时候data()方法是无法获取属性值(undefine)或获取不正确的，而使用attr()方法就能正常使用。所以大家在使用data()无效时，就只能改用attr()吧。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="诡异的jquery data()方法--data()使用无效的原因">
-<meta property="og:url" content="https://doterlin.github.io/2016/03/31/data/index.html">
+  <meta name="description" content="Doterlin">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Doterlin's Blog">
+<meta property="og:url" content="https://doterlin.github.io/page/2/index.html">
 <meta property="og:site_name" content="Doterlin's Blog">
-<meta property="og:description" content="大家都知道$(‘’).data()能获取或操作DOM上的data-*属性值，但我在使用过程中并不止一次发现有时候data()方法是无法获取属性值(undefine)或获取不正确的，而使用attr()方法就能正常使用。所以大家在使用data()无效时，就只能改用attr()吧。">
-<meta property="og:updated_time" content="2016-12-10T19:32:09.257Z">
+<meta property="og:description" content="Doterlin">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="诡异的jquery data()方法--data()使用无效的原因">
-<meta name="twitter:description" content="大家都知道$(‘’).data()能获取或操作DOM上的data-*属性值，但我在使用过程中并不止一次发现有时候data()方法是无法获取属性值(undefine)或获取不正确的，而使用attr()方法就能正常使用。所以大家在使用data()无效时，就只能改用attr()吧。">
+<meta name="twitter:title" content="Doterlin's Blog">
+<meta name="twitter:description" content="Doterlin">
   
     <link rel="alternate" href="/atom.xml" title="Doterlin&#39;s Blog" type="application/atom+xml">
   
@@ -297,7 +296,9 @@ init();
 }()
 </script>
       <div class="outer">
-        <section id="main"><article id="post-data" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main">
+  
+    <article id="post-data" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/blog/2016/03/31/data/" class="article-date">
   <time datetime="2016-03-31T02:39:03.000Z" itemprop="datePublished">2016-03-31</time>
@@ -310,8 +311,8 @@ init();
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      诡异的jquery data()方法--data()使用无效的原因
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2016/03/31/data/">诡异的jquery data()方法--data()使用无效的原因</a>
     </h1>
   
 
@@ -320,14 +321,11 @@ init();
     <div class="article-entry" itemprop="articleBody">
       
         <p>大家都知道$(‘’).data()能获取或操作DOM上的<code>data-*</code>属性值，但我在使用过程中并不止一次发现有时候<code>data()</code>方法是无法获取属性值(<code>undefine</code>)或获取不正确的，而使用<code>attr()</code>方法就能正常使用。所以大家在使用<code>data()</code>无效时，就只能改用<code>attr()</code>吧。</p>
-<a id="more"></a>
-<p>这里我们看下data和attr的工作过程，可能能找出原因：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">"a"</span> <span class="attr">data-xxx</span>=<span class="string">"00123"</span> /&gt;</span> </div><div class="line">alert($('#a').data('xxx')); //'123'</div></pre></td></tr></table></figure>
-<p>没错，这段代码输出的是<code>&#39;123&#39;</code>，再看看下面这段，估计就清楚多了:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">data-role</span>=<span class="string">"page"</span> <span class="attr">data-last-value</span>=<span class="string">"43"</span> <span class="attr">data-hidden</span>=<span class="string">"true"</span> <span class="attr">data-options</span>=<span class="string">'&#123;"name":"John"&#125;'</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span> </div><div class="line">$("div").data("role");         //"page"; </div><div class="line">$("div").data("lastValue");    //43; </div><div class="line">$("div").data("hidden");       //true; </div><div class="line">$("div").data("options").name; //"John";</div></pre></td></tr></table></figure></p>
-<p>即当使用<code>.data()</code>获取值时，<code>jQuery</code>会首先尝试将获取的字符串值转化成JS类型，包括布尔值，<code>null</code>，数字，对象，数组：<br>若值是”true|false”，则返回相应的布尔值；<br>若值是”null”，则返回<code>null</code>；<br>若值是纯数字构成的字符串（+data + “” === data），则返回相应的数字（+data）；<br>若值是由(?:{[\s\S]<em>}|[[\s\S]</em>])$，比如”{key:value}”或[1,2,3]，则尝试使用jQuery.parseJSON解析之；<br><code>如果就是想获取字符串值而不想获得自动转换的值，可以使用.attr(&quot;data-&quot;+key)来获取相应的值。</code></p>
-
-        <br/>
-        <p><i>欢迎大家转载，请注明出处：</i><br/>Doterlin's Blog <a href="https://doterlin.github.io/blog/2016/03/31/data/">https://doterlin.github.io/blog/2016/03/31/data/<a/></p>
+        
+          <p class="article-more-link">
+            <a href="/blog/2016/03/31/data/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
@@ -342,43 +340,14 @@ init();
   </div>
 </article>
 
+
+
   
-<nav id="article-nav">
-  
-    <a href="/blog/2016/04/04/vd/" id="article-nav-newer" class="article-nav-link-wrap">
-      <div class="article-nav-title">
-        <strong class="article-nav-caption">上一篇:</strong>
-        
-          什么是虚拟DOM？
-        
-      </div>
-    </a>
-  
-  
-</nav>
 
 
-
-
-
-<section id="comments">
-  <!-- 多说评论框 start -->
-  <div id="ds-thread" class="ds-thread" data-thread-key="2016/03/31/data/" data-title="诡异的jquery data()方法--data()使用无效的原因" data-url="https://doterlin.github.io/blog/2016/03/31/data/"></div>
-  <!-- 多说评论框 end -->
-  <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-  <script type="text/javascript">
-  var duoshuoQuery = {short_name:"doterlin"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0] 
-       || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-    </script>
-  <!-- 多说公共JS代码 end -->
-</section>
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/blog/">&laquo; 上一页</a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span>
+  </nav>
 </section>
         
           <aside id="sidebar">
@@ -470,13 +439,11 @@ init();
 <script>
   /*var disqus_shortname = 'doterlin';
   
-  var disqus_url = 'https://doterlin.github.io/blog/2016/03/31/data/';
-  
   (function(){
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();*/
 </script>
