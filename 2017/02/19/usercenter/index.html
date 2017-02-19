@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   
-  <title>vue.js(2.0)写的直播类应用web端个人中心 | Doterlin&#39;s Blog</title>
+  <title>vue.js全家桶简析——写一个直播类应用web端个人中心 | Doterlin&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="github地址：https://github.com/doterlin/vue-user-center
 演示地址：https://doterlin.github.io/vue-user-center/">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vue.js(2.0)写的直播类应用web端个人中心">
+<meta property="og:title" content="vue.js全家桶简析——写一个直播类应用web端个人中心">
 <meta property="og:url" content="https://doterlin.github.io/2017/02/19/usercenter/index.html">
 <meta property="og:site_name" content="Doterlin's Blog">
 <meta property="og:description" content="github地址：https://github.com/doterlin/vue-user-center
@@ -16,9 +16,9 @@
 <meta property="og:image" content="https://doterlin.github.io/blog/img/201702/print-screen.png">
 <meta property="og:image" content="https://doterlin.github.io/blog/img/201702/app-structure-ps.png">
 <meta property="og:image" content="https://doterlin.github.io/blog/img/201702/app-structure.png">
-<meta property="og:updated_time" content="2017-02-19T05:06:35.881Z">
+<meta property="og:updated_time" content="2017-02-19T11:44:38.049Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vue.js(2.0)写的直播类应用web端个人中心">
+<meta name="twitter:title" content="vue.js全家桶简析——写一个直播类应用web端个人中心">
 <meta name="twitter:description" content="github地址：https://github.com/doterlin/vue-user-center
 演示地址：https://doterlin.github.io/vue-user-center/">
 <meta name="twitter:image" content="https://doterlin.github.io/blog/img/201702/print-screen.png">
@@ -320,7 +320,7 @@ init();
         
   
     <h1 class="article-title" itemprop="name">
-      vue.js(2.0)写的直播类应用web端个人中心
+      vue.js全家桶简析——写一个直播类应用web端个人中心
     </h1>
   
 
@@ -342,19 +342,25 @@ init();
 <li><a href="https://router.vuejs.org/" target="_blank" rel="external">vue-router</a> 路由管理</li>
 <li><a href="https://github.com/pagekit/vue-resource" target="_blank" rel="external">vue-resource</a> http请求插件</li>
 </ul>
-<h2 id="需求简单分析"><a href="#需求简单分析" class="headerlink" title="需求简单分析"></a>需求简单分析</h2><h3 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h3><p>项目中最直观的交互就是点击了左边的<code>菜单</code>中的某一项后，右边的<code>主内容</code>容器需显示出对应的内容，传统的方法的话可能会采用<code>iframe</code>或者页面跳转的形式来实现。但是我们有了一些优秀的框架就可以将之实现为真正的<code>SPA</code>页面。<br>解决这一问题最靠谱的方案就是使用<code>前端路由</code>，至于我给它前面加上“前端”两字的原因，我们先看看对于<code>路由</code>的解释：</p>
+<h2 id="选型分析"><a href="#选型分析" class="headerlink" title="选型分析"></a>选型分析</h2><h3 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h3><p>项目中最直观的交互就是点击了左边的<code>菜单</code>中的某一项后，右边的<code>主内容</code>容器需显示出对应的内容，传统的方法的话可能会采用<code>iframe</code>或者多页面跳转的形式来实现。但是我们有了一些优秀的框架就可以将之实现为真正的<code>SPA</code>页面。<br>解决这一问题最靠谱的方案就是使用<code>前端路由</code>，至于我给它前面加上“前端”两字的原因，我们先看看对于<code>路由</code>的解释：</p>
 <blockquote>
 <p>路由（routing）是指分组从源到目的地时，决定端到端路径的网络范围的进程。</p>
 </blockquote>
-<p>而我们在前端使用的<code>路由</code>一词是借用于其他技术领域的词语，只是实现了前半句。而后半句应是涉及浏览器渲染的进程。所以我将之成为‘前端路由’以区别出它是一个引申概念（好比“单车”和“电单车”）</p>
-<pre><code>`vue.js`全家桶家族里面用于处理路由的是`vue-router`，
-</code></pre><h2 id="应用结构"><a href="#应用结构" class="headerlink" title="应用结构"></a>应用结构</h2><p>组件的父子关系和位置大概如下:</p>
+<p>而我们在前端使用的<code>路由</code>一词是借用于其他技术领域的词语，只是实现了前半句。而后半句应是涉及浏览器渲染的进程。所以我将之成为‘前端路由’以区别出它是一个引申概念（好比“单车”和“电单车”）。<br><code>vue.js</code>全家桶家族里面用于实现路由的插件是<code>vue-router</code>，这样使得你可以在vue实例中直接引入和调用<code>vue-router</code>的方法。关于<code>vue-router</code>的使用请查阅上小节给出的官网文档。</p>
+<h3 id="状态管理"><a href="#状态管理" class="headerlink" title="状态管理"></a>状态管理</h3><p>说到这个，还是提到<code>Redux</code>作者Dan Abramov的那句话(译文)：</p>
+<blockquote>
+<p>Flux 架构就像眼镜：您自会知道什么时候需要它。</p>
+</blockquote>
+<p>当你单独的使用一个<code>Global.js</code>或者<a href="http://cn.vuejs.org/v2/guide/components.html#非父子组件通信" target="_blank" rel="external">事件</a>来管理一些变量(状态)在不同组件之间传递，如果变量越来越多，传递关系越来越复杂（或者在将来很可能变复杂），你自然会想到是不是该使用一个专门处理这些东西的机制。</p>
+<p><code>vuex</code>便是<code>vue.js</code>全家桶里面的状态管理角色，简单地说，<code>vuex</code>里面有<code>state</code>这个对象用于保存组件们公共状态，<code>this.$store.state</code>来取出，但出于<code>vuex</code>机制(为了记录修改历史)我们并不能直接修改<code>state</code>里的状态，而是通过<code>mutation</code>来修改。<code>mutation</code>是在<code>vuex</code>里的定义的一些方法。另外<code>Vue Devtool</code>已经集成了<code>vuex</code>，我们可以在里面清楚的查看<code>vuex</code>各个部分。详情请查阅<code>vuex</code>文档。</p>
+<p>那为何这么小的项目我也要将<code>vuex</code>用上呢，这当然是为了日后的拓展。当左边的菜单栏不是三个而是七八个，并且各个组件之间共同状态增多（比如说，我在充值组件成功进行了充值操作，左上角的显示财富数的组件也要做对应更新），我们便会泪流满面的去迎接<code>vuex</code>。</p>
+<h3 id="http请求"><a href="#http请求" class="headerlink" title="http请求"></a>http请求</h3><p>在这之前很多人用的<code>ajax</code>库是<code>jQuery</code>的一系列<code>ajax</code>方法，但是如果我们为了使用这些方法而将<code>jQuery</code>引入项目那么体积会大出一部分，小题大做。<code>vue-resource</code>是一个轻量的(压缩后约5k+)并且可以在vue中使用的http库(<code>this.$http</code>)，并且他实现了<code>Promise</code>对象并支持get,post,put,delete,jsonp等请求。</p>
+<h2 id="应用结构"><a href="#应用结构" class="headerlink" title="应用结构"></a>应用结构</h2><p>组件的父子关系和位置大概如下:</p>
 <p><img src="/blog/img/201702/app-structure-ps.png" alt="应用结构"></p>
 <p>使用<code>chrome</code>插件<code>Vue.js devtools</code>也可以清晰的查看应用的组件组成及相关数据：</p>
 <p><img src="/blog/img/201702/app-structure.png" alt="Vue.js devtools"></p>
 <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><ul>
 <li>里面包含一些实用的小组件可复用(分页组件，数据展示表格，Loading组件等)</li>
-<li>本项目开始时，但是不排除日后扩展，所以在状态管理处理时使用了<code>vuex</code></li>
 <li>所有对代码解释已在注释中，方便查看</li>
 <li>一些组件有写到一些url，只是为了表明在实际开发时需要请求后台，在此示例中为了演示效果所以并没有用到</li>
 <li>loading状态是用<code>setTimeout</code>方法演示，并非真正请求后台</li>
@@ -366,7 +372,7 @@ init();
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://doterlin.github.io/blog/2017/02/19/usercenter/" data-id="cizc8evdm000fawl11dt2ugpv" class="article-share-link">Share</a>
+      <a data-url="https://doterlin.github.io/blog/2017/02/19/usercenter/" data-id="cizc8fd59000gv4l1q1qltxbl" class="article-share-link">Share</a>
       
         <a href="https://doterlin.github.io/blog/2017/02/19/usercenter/#ds-thread" class="article-comment-link">留言</a>
       
@@ -393,7 +399,7 @@ init();
 
 <section id="comments">
   <!-- 多说评论框 start -->
-  <div id="ds-thread" class="ds-thread" data-thread-key="2017/02/19/usercenter/" data-title="vue.js(2.0)写的直播类应用web端个人中心" data-url="https://doterlin.github.io/blog/2017/02/19/usercenter/"></div>
+  <div id="ds-thread" class="ds-thread" data-thread-key="2017/02/19/usercenter/" data-title="vue.js全家桶简析——写一个直播类应用web端个人中心" data-url="https://doterlin.github.io/blog/2017/02/19/usercenter/"></div>
   <!-- 多说评论框 end -->
   <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
   <script type="text/javascript">
@@ -452,7 +458,7 @@ init();
       <ul>
         
           <li>
-            <a href="/blog/2017/02/19/usercenter/">vue.js(2.0)写的直播类应用web端个人中心</a>
+            <a href="/blog/2017/02/19/usercenter/">vue.js全家桶简析——写一个直播类应用web端个人中心</a>
           </li>
         
           <li>
