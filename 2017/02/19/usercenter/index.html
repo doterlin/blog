@@ -5,25 +5,21 @@
   
   <title>vue.js(2.0)写的直播类应用web端个人中心 | Doterlin&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一个用vue.js(2.0)写的直播类应用web端个人中心
-github地址：https://github.com/doterlin/vue-user-center
+  <meta name="description" content="github地址：https://github.com/doterlin/vue-user-center
 演示地址：https://doterlin.github.io/vue-user-center/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue.js(2.0)写的直播类应用web端个人中心">
 <meta property="og:url" content="https://doterlin.github.io/2017/02/19/usercenter/index.html">
 <meta property="og:site_name" content="Doterlin's Blog">
-<meta property="og:description" content="一个用vue.js(2.0)写的直播类应用web端个人中心
-github地址：https://github.com/doterlin/vue-user-center
+<meta property="og:description" content="github地址：https://github.com/doterlin/vue-user-center
 演示地址：https://doterlin.github.io/vue-user-center/">
 <meta property="og:image" content="https://doterlin.github.io/blog/img/201702/print-screen.png">
-<meta property="og:image" content="https://github.com/doterlin/vue-user-center/blob/master/images/print-screen.png">
 <meta property="og:image" content="https://doterlin.github.io/blog/img/201702/app-structure-ps.png">
 <meta property="og:image" content="https://doterlin.github.io/blog/img/201702/app-structure.png">
-<meta property="og:updated_time" content="2017-02-19T04:32:09.634Z">
+<meta property="og:updated_time" content="2017-02-19T05:06:35.881Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue.js(2.0)写的直播类应用web端个人中心">
-<meta name="twitter:description" content="一个用vue.js(2.0)写的直播类应用web端个人中心
-github地址：https://github.com/doterlin/vue-user-center
+<meta name="twitter:description" content="github地址：https://github.com/doterlin/vue-user-center
 演示地址：https://doterlin.github.io/vue-user-center/">
 <meta name="twitter:image" content="https://doterlin.github.io/blog/img/201702/print-screen.png">
   
@@ -333,20 +329,26 @@ init();
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>一个用vue.js(2.0)写的直播类应用web端个人中心</p>
 <p>github地址：<a href="https://github.com/doterlin/vue-user-center" target="_blank" rel="external">https://github.com/doterlin/vue-user-center</a></p>
 <p>演示地址：<a href="https://doterlin.github.io/vue-user-center">https://doterlin.github.io/vue-user-center/</a></p>
 </blockquote>
 <a id="more"></a>
-<p><img src="/blog/img/201702/print-screen.png" alt="截图"><br><img src="https://github.com/doterlin/vue-user-center/blob/master/images/print-screen.png" alt="截图"></p>
-<h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm run build</div></pre></td></tr></table></figure>
-<h2 id="框架及插件"><a href="#框架及插件" class="headerlink" title="框架及插件"></a>框架及插件</h2><ul>
+<p>下图为项目截图：<br><img src="/blog/img/201702/print-screen.png" alt="截图"></p>
+<h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><p>项目采用webpack构建(具体配置请参考github源码中的<code>webpack.config.js</code>)，如需编译只要输入命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm run build</div></pre></td></tr></table></figure></p>
+<h2 id="框架及插件"><a href="#框架及插件" class="headerlink" title="框架及插件"></a>框架及插件</h2><p>在实际开发时，与需求方</p>
+<ul>
 <li><a href="https://vuejs.org/v2/guide/" target="_blank" rel="external">vue.js</a> 主框架</li>
 <li><a href="https://vuex.vuejs.org/" target="_blank" rel="external">vuex</a> 状态管理</li>
 <li><a href="https://router.vuejs.org/" target="_blank" rel="external">vue-router</a> 路由管理</li>
 <li><a href="https://github.com/pagekit/vue-resource" target="_blank" rel="external">vue-resource</a> http请求插件</li>
 </ul>
-<h2 id="应用结构"><a href="#应用结构" class="headerlink" title="应用结构"></a>应用结构</h2><p>组件的父子关系和位置大概如下:</p>
+<h2 id="需求简单分析"><a href="#需求简单分析" class="headerlink" title="需求简单分析"></a>需求简单分析</h2><h3 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h3><p>项目中最直观的交互就是点击了左边的<code>菜单</code>中的某一项后，右边的<code>主内容</code>容器需显示出对应的内容，传统的方法的话可能会采用<code>iframe</code>或者页面跳转的形式来实现。但是我们有了一些优秀的框架就可以将之实现为真正的<code>SPA</code>页面。<br>解决这一问题最靠谱的方案就是使用<code>前端路由</code>，至于我给它前面加上“前端”两字的原因，我们先看看对于<code>路由</code>的解释：</p>
+<blockquote>
+<p>路由（routing）是指分组从源到目的地时，决定端到端路径的网络范围的进程。</p>
+</blockquote>
+<p>而我们在前端使用的<code>路由</code>一词是借用于其他技术领域的词语，只是实现了前半句。而后半句应是涉及浏览器渲染的进程。所以我将之成为‘前端路由’以区别出它是一个引申概念（好比“单车”和“电单车”）</p>
+<pre><code>`vue.js`全家桶家族里面用于处理路由的是`vue-router`，
+</code></pre><h2 id="应用结构"><a href="#应用结构" class="headerlink" title="应用结构"></a>应用结构</h2><p>组件的父子关系和位置大概如下:</p>
 <p><img src="/blog/img/201702/app-structure-ps.png" alt="应用结构"></p>
 <p>使用<code>chrome</code>插件<code>Vue.js devtools</code>也可以清晰的查看应用的组件组成及相关数据：</p>
 <p><img src="/blog/img/201702/app-structure.png" alt="Vue.js devtools"></p>
@@ -364,12 +366,12 @@ init();
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://doterlin.github.io/blog/2017/02/19/usercenter/" data-id="cizc6dy770009v0l1r98n4jpy" class="article-share-link">Share</a>
+      <a data-url="https://doterlin.github.io/blog/2017/02/19/usercenter/" data-id="cizc8evdm000fawl11dt2ugpv" class="article-share-link">Share</a>
       
         <a href="https://doterlin.github.io/blog/2017/02/19/usercenter/#ds-thread" class="article-comment-link">留言</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/vue/">vue</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/MVVM/">MVVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/vue-js/">vue.js</a></li></ul>
 
     </footer>
   </div>
@@ -418,7 +420,7 @@ init();
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/MVVM/">MVVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Other/">Other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/css3/">css3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/vue/">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/vue-js/">vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/组件化/">组件化</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/MVVM/">MVVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Node-js/">Node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/Other/">Other</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/React/">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/css3/">css3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/vue-js/">vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/组件化/">组件化</a></li></ul>
     </div>
   </div>
 
@@ -428,7 +430,7 @@ init();
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/blog/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/blog/tags/MVVM/" style="font-size: 15px;">MVVM</a> <a href="/blog/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/blog/tags/Other/" style="font-size: 10px;">Other</a> <a href="/blog/tags/React/" style="font-size: 10px;">React</a> <a href="/blog/tags/css3/" style="font-size: 15px;">css3</a> <a href="/blog/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/blog/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/blog/tags/vue/" style="font-size: 10px;">vue</a> <a href="/blog/tags/vue-js/" style="font-size: 10px;">vue.js</a> <a href="/blog/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/blog/tags/组件化/" style="font-size: 10px;">组件化</a>
+      <a href="/blog/tags/HTTP/" style="font-size: 10px;">HTTP</a> <a href="/blog/tags/MVVM/" style="font-size: 16.67px;">MVVM</a> <a href="/blog/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/blog/tags/Other/" style="font-size: 10px;">Other</a> <a href="/blog/tags/React/" style="font-size: 10px;">React</a> <a href="/blog/tags/css3/" style="font-size: 13.33px;">css3</a> <a href="/blog/tags/jQuery/" style="font-size: 10px;">jQuery</a> <a href="/blog/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/blog/tags/vue-js/" style="font-size: 13.33px;">vue.js</a> <a href="/blog/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/blog/tags/组件化/" style="font-size: 10px;">组件化</a>
     </div>
   </div>
 
