@@ -357,7 +357,6 @@ body {
 #header-title {
   text-align: center;
   height: 40px;
-  -webkit-animation: twinkling 2.5s infinite ease-in-out;
   position: absolute;
   top: 50%;
   -webkit-transition: all 1s;
@@ -390,12 +389,6 @@ body {
   100% {
     opacity: 0.2;
   }
-}
-#header-title:hover {
-  -webkit-transform: rotateY(360deg);
-  -moz-transform: rotateY(360deg);
-  -ms-transform: rotateY(360deg);
-  transform: rotateY(360deg);
 }
 #logo,
 #subtitle {
